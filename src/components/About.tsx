@@ -1,9 +1,9 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import AboutHeroImage from "../assets/img/about-hero.jpg";
+import { ArrowRight } from "lucide-react";
 
 const About = () => {
   return (
-    <section className="bg-gray-900 py-16 lg:py-24">
+    <section className="bg-[#0A0A0A] py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content */}
@@ -13,18 +13,23 @@ const About = () => {
                 — About
               </span>
             </div>
-            
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
+
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-[#F2F2F2] mb-8 leading-tight">
               Pioneering Indonesia automotive market from 1975
             </h2>
 
-            <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+            <div className="space-y-6 text-[#A8A8A8] font-medium text-lg leading-relaxed">
               <p>
-                Led by its passionate leader, Mr. Joe Ferry, Nusantara has carried a total of 6 brands from various segments in its 26-year journey in the automotive industry in Indonesia.
+                Led by its passionate leader, Mr. Joe Ferry, Nusantara has
+                carried a total of 6 brands from various segments in its 26-year
+                journey in the automotive industry in Indonesia.
               </p>
-              
+
               <p>
-                Today, Nusantara offers both functional, mass-market car products and notable luxury, lifestyle automotive products from leading brands through more than 12 full dealerships (3S1) and 9 authorized service centers (2S2).
+                Today, Nusantara offers both functional, mass-market car
+                products and notable luxury, lifestyle automotive products from
+                leading brands through more than 12 full dealerships (3S1) and 9
+                authorized service centers (2S2).
               </p>
             </div>
 
@@ -40,7 +45,7 @@ const About = () => {
           <div className="order-1 lg:order-2">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
               <img
-                src="https://images.pexels.com/photos/1213294/pexels-photo-1213294.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop"
+                src={AboutHeroImage}
                 alt="Modern automotive showroom"
                 className="w-full h-[500px] lg:h-[600px] object-cover transform hover:scale-105 transition-transform duration-700"
               />

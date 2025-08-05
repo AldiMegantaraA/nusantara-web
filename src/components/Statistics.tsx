@@ -1,46 +1,39 @@
-import React from 'react';
+import React from "react";
 
 const Statistics = () => {
   const stats = [
     {
-      number: '25',
-      label: 'Years of automotive innovation',
-      description: 'Decades of experience in the Indonesian automotive market'
+      number: "25",
+      label: "Years of automotive innovation",
     },
     {
-      number: '8',
-      label: 'Partnered brands',
-      description: 'Leading automotive brands across various segments'
+      number: "8",
+      label: "Partnered brands",
     },
     {
-      number: '40',
-      label: 'Brand locations',
-      description: 'Full dealerships and authorized service centers nationwide'
+      number: "40",
+      label: "Brand locations",
     },
     {
-      number: '100k',
-      label: 'Satisfied customers',
-      description: 'Trust and excellence delivered across Indonesia'
-    }
+      number: "100k",
+      label: "Satisfied customers",
+    },
   ];
 
   return (
-    <section className="bg-gray-800 py-16 lg:py-20">
+    <section className="bg-[#0A0A0A] py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {stats.map((stat, index) => (
             <div key={index} className="text-center group">
               <div className="mb-4">
-                <span className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white group-hover:text-gray-300 transition-colors duration-300">
+                <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#A8A8A8] to-sky-[#F2F2F200] text-[120px] font-medium">
                   {stat.number}
                 </span>
               </div>
-              <h3 className="text-lg font-semibold text-gray-300 mb-2">
+              <h3 className="text-xl font-medium text-[#F2F2F2]">
                 {stat.label}
               </h3>
-              <p className="text-sm text-gray-400 leading-relaxed hidden sm:block">
-                {stat.description}
-              </p>
             </div>
           ))}
         </div>
