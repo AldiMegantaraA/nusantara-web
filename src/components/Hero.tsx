@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import NusantaraHeroImage from "../assets/img/nusantara-hero.png";
 
 const Hero = () => {
@@ -35,11 +35,13 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 items-center">
               <button className="group bg-white text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 transform hover:scale-105">
                 <span>Explore our brands</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <div className="w-6 h-6 bg-[#711917] rounded-full flex items-center justify-center">
+                  <ChevronRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
               </button>
               <button className="text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-all duration-300 flex items-center space-x-2">
                 <span>Contact us</span>
-                <ArrowRight className="w-5 h-5" />
+                <ChevronRight className="w-5 h-5" />
               </button>
             </div>
           </div>
