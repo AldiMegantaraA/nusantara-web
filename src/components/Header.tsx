@@ -1,27 +1,33 @@
-import React, { useState } from 'react';
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
+import React, { useState } from "react";
+import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOurStoryOpen, setIsOurStoryOpen] = useState(false);
 
   const navigationItems = [
-    { name: 'Our Story', hasDropdown: true, dropdownItems: [
-        { name: 'Our Journey', href: '/our-journey' },
-        { name: 'Our Culture', href: '/our-culture' }
-      ]
+    {
+      name: "Our Story",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "Our Journey", href: "/our-journey" },
+        { name: "Our Culture", href: "/our-culture" },
+      ],
     },
-    { name: 'Brands', hasDropdown: false },
-    { name: 'Branches', hasDropdown: false },
-    { name: 'Partnership', hasDropdown: false },
-    { name: 'News', hasDropdown: false },
-    { name: 'Community', hasDropdown: false },
+    { name: "Brands", hasDropdown: false },
+    { name: "Branches", hasDropdown: false },
+    { name: "Partnership", hasDropdown: false },
+    { name: "News", hasDropdown: false },
+    { name: "Community", hasDropdown: false },
   ];
 
   const handleDropdownItemClick = (href: string) => {
     // For now, just log the navigation - you can implement actual routing later
     console.log(`Navigating to: ${href}`);
-    setIsOurStoryOpen(false);
+    navigate("/our-story" + href);
+    // setIsOurStoryOpen(false);
   };
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
@@ -38,30 +44,40 @@ const Header = () => {
           <nav className="hidden md:flex space-x-8">
             {navigationItems.map((item) => (
               <div key={item.name} className="relative group">
-                <button 
+                <button
                   className="flex items-center space-x-1 text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium"
-                  onMouseEnter={() => item.hasDropdown && setIsOurStoryOpen(true)}
-                  onMouseLeave={() => item.hasDropdown && setIsOurStoryOpen(false)}
-                  onClick={() => item.hasDropdown && setIsOurStoryOpen(!isOurStoryOpen)}
+                  onMouseEnter={() =>
+                    item.hasDropdown && setIsOurStoryOpen(true)
+                  }
+                  // onMouseLeave={() =>
+                  //   item.hasDropdown && setIsOurStoryOpen(false)
+                  // }
+                  onClick={() =>
+                    item.hasDropdown && setIsOurStoryOpen(!isOurStoryOpen)
+                  }
                 >
                   <span>{item.name}</span>
                   {item.hasDropdown && (
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOurStoryOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        isOurStoryOpen ? "rotate-180" : ""
+                      }`}
+                    />
                   )}
                 </button>
-                
+
                 {/* Dropdown Menu */}
                 {item.hasDropdown && isOurStoryOpen && (
-                  <div 
+                  <div
                     className="absolute top-full left-0 mt-2 w-96 bg-white rounded-2xl shadow-2xl z-50 overflow-hidden"
                     onMouseEnter={() => setIsOurStoryOpen(true)}
                     onMouseLeave={() => setIsOurStoryOpen(false)}
                   >
                     <div className="grid grid-cols-2 gap-0">
                       {/* Our Journey */}
-                      <div 
+                      <div
                         className="group cursor-pointer hover:bg-gray-50 transition-colors duration-200"
-                        onClick={() => handleDropdownItemClick('/our-journey')}
+                        onClick={() => handleDropdownItemClick("/journey")}
                       >
                         <div className="p-4">
                           <div className="relative overflow-hidden rounded-lg mb-4">
@@ -73,16 +89,18 @@ const Header = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                           </div>
                           <div className="flex items-center justify-between">
-                            <h3 className="text-gray-800 font-semibold text-sm">Our Journey</h3>
+                            <h3 className="text-gray-800 font-semibold text-sm">
+                              Our Journey
+                            </h3>
                             <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-gray-800 group-hover:translate-x-1 transition-all duration-200" />
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Our Culture */}
-                      <div 
+                      <div
                         className="group cursor-pointer hover:bg-gray-50 transition-colors duration-200"
-                        onClick={() => handleDropdownItemClick('/our-culture')}
+                        onClick={() => handleDropdownItemClick("/culture")}
                       >
                         <div className="p-4">
                           <div className="relative overflow-hidden rounded-lg mb-4">
@@ -94,7 +112,9 @@ const Header = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                           </div>
                           <div className="flex items-center justify-between">
-                            <h3 className="text-gray-800 font-semibold text-sm">Our Culture</h3>
+                            <h3 className="text-gray-800 font-semibold text-sm">
+                              Our Culture
+                            </h3>
                             <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-gray-800 group-hover:translate-x-1 transition-all duration-200" />
                           </div>
                         </div>
@@ -112,7 +132,11 @@ const Header = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-300 hover:text-white transition-colors duration-200"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
