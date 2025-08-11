@@ -37,10 +37,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="flex flex-col justify-between h-full">
             <div>
-              <p className="text-[#F2F2F2] font-bold text-[60px]">
+              <p className="text-[#F2F2F2] font-bold text-4xl lg:text-[60px]">
                 Feel free to reach us for any inquiries
               </p>
-              <p className="text-[#A8A8A8] font-medium text-xl mt-6">
+              <p className="text-[#A8A8A8] font-medium text-base lg:text-xl mt-6">
                 We will try to reply to you during the 24 hours.
               </p>
             </div>
@@ -77,13 +77,15 @@ const Footer = () => {
 
         {/* Content */}
         <div className="relative pt-32 h-full 2xl:h-screen max-md:h-screen z-10 mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between text-[#F2F2F2]">
-            <div>
+          <div className="flex gap-10 flex-col lg:flex-row justify-between items-center lg:items-start text-[#F2F2F2]">
+            <div className="flex flex-col justify-center items-center">
               <img src={NusantaraLogo} className="mb-6" />
-              <h1 className="text-4xl font-bold">Nusantara Group</h1>
+              <h1 className="text-2xl lg:text-4xl font-bold">
+                Nusantara Group
+              </h1>
             </div>
 
-            <div className="text-4xl font-bold flex flex-col gap-4">
+            <div className="text-2xl lg:text-4xl font-bold flex flex-col gap-4">
               <p>info@nusantara-group.com</p>
               <p>+62 (21) 837 88888</p>
               <p>Jl. MT Haryono Kav. 5-6,</p>
@@ -93,16 +95,16 @@ const Footer = () => {
 
           <div className="border-t-[1px] border-[#4B4B4B] my-10" />
 
-          <div className="text-[#F2F2F2] flex justify-between">
-            <div className="w-1/2">
-              <p>
+          <div className="text-[#F2F2F2] flex gap-4 flex-col lg:flex-row justify-center lg:justify-between">
+            <div className="w-full lg:w-1/2">
+              <p className="font-medium text-[#A8A8A8]">
                 Nusantara Group is registered and operates in Indonesia under
                 the legal name PT Nusantara Batavia International. <br />
                 <br /> Our head office and management team are based in Jakarta.
               </p>
             </div>
-            <div className="w-1/2">
-              <div className="flex justify-end gap-[100px]">
+            <div className="w-full lg:w-1/2">
+              <div className="flex justify-center lg:justify-end gap-[100px]">
                 {FooterMenu.map((menu, index) => (
                   <div key={index} className="mb-6">
                     <h1 className="font-bold text-[#A8A8A8] text-xl mb-3">
