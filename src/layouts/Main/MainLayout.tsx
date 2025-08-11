@@ -10,7 +10,7 @@ const MainLayout = ({ children }: Props) => {
     <div className="min-h-lvh flex flex-col">
       <div>
         <Header />
-        <div className="min-h-screen bg-gray-900">{children}</div>
+        <div className="min-h-screen bg-[#0A0A0A]">{children}</div>
         <Footer />
       </div>
     </div>

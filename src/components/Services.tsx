@@ -1,25 +1,25 @@
 const Services = () => {
   const services = [
     {
-      title: 'Marketing',
-      isActive: true
+      title: "Marketing",
+      isActive: true,
     },
     {
-      title: 'Branding',
-      isActive: false
+      title: "Branding",
+      isActive: false,
     },
     {
-      title: 'Activation',
-      isActive: false
+      title: "Activation",
+      isActive: false,
     },
     {
-      title: 'Technology',
-      isActive: false
-    }
+      title: "Technology",
+      isActive: false,
+    },
   ];
 
   return (
-    <section className="bg-gray-900 py-16 lg:py-24">
+    <section className="bg-[#0A0A0A] py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12">
@@ -57,11 +57,13 @@ const Services = () => {
             <div className="space-y-6 mb-8">
               {services.map((service, index) => (
                 <div key={index} className="group cursor-pointer">
-                  <h3 className={`text-3xl sm:text-4xl lg:text-5xl font-bold transition-colors duration-300 ${
-                    service.isActive 
-                      ? 'text-white border-b-2 border-white pb-2' 
-                      : 'text-gray-600 hover:text-gray-400'
-                  }`}>
+                  <h3
+                    className={`text-3xl sm:text-4xl lg:text-5xl font-bold transition-colors duration-300 ${
+                      service.isActive
+                        ? "text-white border-b-2 border-white pb-2"
+                        : "text-gray-600 hover:text-gray-400"
+                    }`}
+                  >
                     {service.title}
                   </h3>
                 </div>
@@ -71,7 +73,9 @@ const Services = () => {
             {/* Description */}
             <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
               <p>
-                We execute localized launch events, roadshows, and test drive programs tailored to generate awareness and engagement for new automotive entries into the Indonesian market.
+                We execute localized launch events, roadshows, and test drive
+                programs tailored to generate awareness and engagement for new
+                automotive entries into the Indonesian market.
               </p>
             </div>
           </div>
@@ -86,11 +90,13 @@ const Services = () => {
               className="w-full h-[300px] lg:h-[400px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent"></div>
-            
+
             {/* Royal Enfield Logo Overlay */}
             <div className="absolute bottom-8 right-8">
               <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                <span className="text-white font-bold text-lg">ROYAL ENFIELD</span>
+                <span className="text-white font-bold text-lg">
+                  ROYAL ENFIELD
+                </span>
               </div>
             </div>
           </div>

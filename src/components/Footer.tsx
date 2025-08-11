@@ -32,7 +32,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[#0A0A0AF2]">
+    <footer className="bg-[#0A0A0A]">
       <div className="mx-auto max-w-7xl w-full py-[72px] px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#711917] via-[#0A0A0A] to-[#0A0A0A]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="flex flex-col justify-between h-full">
