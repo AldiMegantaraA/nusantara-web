@@ -1,4 +1,5 @@
 import NusantaraLogo from "../../../../assets/img/nusantara-logo-background.png";
+
 const Hero = () => {
   return (
     <section className="bg-[#0A0A0A] relative min-h-screen flex items-center overflow-hidden">

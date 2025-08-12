@@ -16,17 +16,17 @@ const Header = () => {
         { name: "Our Culture", href: "/our-culture" },
       ],
     },
-    { name: "Brands", hasDropdown: false },
-    { name: "Branches", hasDropdown: false },
+    { name: "Brands", href: "/brands", hasDropdown: false },
+    { name: "Branches", href: "/branches", hasDropdown: false },
     { name: "Partnership", hasDropdown: false },
     { name: "News", hasDropdown: false },
     { name: "Community", hasDropdown: false },
   ];
 
-  const handleDropdownItemClick = (href: string) => {
+  const handleDropdownItemClick = (href: string | undefined) => {
     // For now, just log the navigation - you can implement actual routing later
     console.log(`Navigating to: ${href}`);
-    navigate("/our-story" + href);
+    navigate(href || "/");
     // setIsOurStoryOpen(false);
   };
   return (
@@ -56,7 +56,9 @@ const Header = () => {
                     item.hasDropdown && setIsOurStoryOpen(!isOurStoryOpen)
                   }
                 >
-                  <span>{item.name}</span>
+                  <span onClick={() => handleDropdownItemClick(item?.href)}>
+                    {item.name}
+                  </span>
                   {item.hasDropdown && (
                     <ChevronDown
                       className={`w-4 h-4 transition-transform duration-200 ${
@@ -77,7 +79,9 @@ const Header = () => {
                       {/* Our Journey */}
                       <div
                         className="group cursor-pointer hover:bg-gray-50 transition-colors duration-200"
-                        onClick={() => handleDropdownItemClick("/journey")}
+                        onClick={() =>
+                          handleDropdownItemClick("/our-story/journey")
+                        }
                       >
                         <div className="p-4">
                           <div className="relative overflow-hidden rounded-lg mb-4">
@@ -100,7 +104,9 @@ const Header = () => {
                       {/* Our Culture */}
                       <div
                         className="group cursor-pointer hover:bg-gray-50 transition-colors duration-200"
-                        onClick={() => handleDropdownItemClick("/culture")}
+                        onClick={() =>
+                          handleDropdownItemClick("/our-story/culture")
+                        }
                       >
                         <div className="p-4">
                           <div className="relative overflow-hidden rounded-lg mb-4">

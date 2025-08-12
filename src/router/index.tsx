@@ -3,6 +3,8 @@ import NotFound404Page from "../pages/error/404";
 import Layout from "../layouts";
 import homeRoutes from "./routes/home";
 import ourStoryRoutes from "./routes/our-story";
+import brandRoutes from "./routes/brands";
+import branchesRoutes from "./routes/branches";
 
 const routes = [
   {
@@ -15,6 +17,14 @@ const routes = [
       {
         path: "our-story",
         children: ourStoryRoutes,
+      },
+      {
+        path: "brands",
+        children: brandRoutes,
+      },
+      {
+        path: "branches",
+        children: branchesRoutes,
       },
     ],
   },

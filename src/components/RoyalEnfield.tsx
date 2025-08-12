@@ -1,4 +1,4 @@
-import RoyalEnfieldImage from "../../../../assets/img/royal-enfield-image.png";
+import RoyalEnfieldImage from "../assets/img/royal-enfield-image.png";
 
 const RoyalEnfield = () => {
   return (

@@ -1,6 +1,6 @@
 import Hero from "./components/Hero";
-import RoyalEnfield from "./components/RoyalEnfield";
 import CultureDescription from "./components/CultureDescription";
+import RoyalEnfield from "../../../components/RoyalEnfield";
 
 const Culture = () => {
   return (
