@@ -32,38 +32,41 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-[#0A0A0A]">
-      <div className="mx-auto max-w-7xl w-full py-[72px] px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#711917] via-[#0A0A0A] to-[#0A0A0A]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="flex flex-col justify-between h-full">
-            <div>
-              <p className="text-[#F2F2F2] font-bold text-4xl lg:text-[60px]">
-                Feel free to reach us for any inquiries
-              </p>
-              <p className="text-[#A8A8A8] font-medium text-base lg:text-xl mt-6">
-                We will try to reply to you during the 24 hours.
-              </p>
-            </div>
+    <footer>
+      <div className="bg-gradient-to-b from-[#711917] via-[#0A0A0A] to-[#0A0A0A]">
+        <div className="mx-auto max-w-7xl w-full py-[72px] px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="flex flex-col justify-between h-full">
+              <div>
+                <p className="text-[#F2F2F2] font-bold text-4xl lg:text-6xl">
+                  Get in touch with our Customer Service
+                </p>
+                <p className="text-[#A8A8A8] font-medium text-base lg:text-xl mt-6">
+                  We will respond to you as soon as possible.
+                </p>
+              </div>
 
-            <div>
-              <p className="text-[#A8A8A8] font-medium text-lg">
-                You’re always welcome to book a private appointment with us at
-                our <u>Jakarta office</u>.
-              </p>
+              <div>
+                <p className="text-[#A8A8A8] font-medium text-xl">
+                  You’re always welcome to book a private appointment with us at
+                  our <u>Jakarta office</u>.
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="order-1 lg:order-2">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <img
-                src={FormHero}
-                alt="Modern automotive showroom"
-                className="w-full  object-cover transform hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
+            <div className="order- lg:order-2">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                <img
+                  src={FormHero}
+                  alt="Modern automotive showroom"
+                  className="w-full  object-cover transform hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
       <div className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">

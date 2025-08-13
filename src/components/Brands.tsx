@@ -1,54 +1,46 @@
 import { ChevronRight } from "lucide-react";
+import BgHonda from "../assets/img/bg-honda.png";
+import BgRoyalEnfield from "../assets/img/bg-royal-enfield.png";
+import BgHyundai from "../assets/img/bg-hyundai.png";
+import BgScomadi from "../assets/img/bg-scomadi.png";
+import BgJeep from "../assets/img/bg-jeep.png";
+import BgMercy from "../assets/img/bg-mercy.png";
+import BgFord from "../assets/img/bg-ford.png";
+import BgChevrolet from "../assets/img/bg-chevrolet.png";
 
 const Brands = () => {
   const brands = [
     {
       name: "Honda",
-      image:
-        "https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      logo: "HONDA",
+      image: BgHonda,
     },
     {
       name: "Royal Enfield",
-      image:
-        "https://images.pexels.com/photos/1119796/pexels-photo-1119796.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      logo: "ROYAL ENFIELD",
+      image: BgRoyalEnfield,
     },
     {
       name: "Hyundai",
-      image:
-        "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      logo: "HYUNDAI",
+      image: BgHyundai,
     },
     {
       name: "Scomadi",
-      image:
-        "https://images.pexels.com/photos/1119796/pexels-photo-1119796.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      logo: "Scomadi",
+      image: BgScomadi,
     },
     {
-      name: "Chevrolet",
-      image:
-        "https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      logo: "CHEVROLET",
+      name: "Jeep",
+      image: BgJeep,
     },
     {
       name: "Mercedes",
-      image:
-        "https://images.pexels.com/photos/1213294/pexels-photo-1213294.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      logo: "Mercedes-Benz",
+      image: BgMercy,
     },
     {
       name: "Ford",
-      image:
-        "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      logo: "FORD",
+      image: BgFord,
     },
     {
       name: "Chevrolet",
-      image:
-        "https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      logo: "CHEVROLET",
+      image: BgChevrolet,
     },
   ];
 
@@ -71,7 +63,7 @@ const Brands = () => {
           </div>
 
           <div className="lg:max-w-md">
-            <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+            <p className="text-[#A8A8A8] font-medium text-lg mb-6 leading-relaxed">
               We represent top automotive brands —each chosen for reliability,
               innovation, and customer satisfaction.
             </p>
@@ -89,7 +81,7 @@ const Brands = () => {
           {brands.map((brand, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-2xl bg-gray-800 aspect-square hover:transform hover:scale-105 transition-all duration-500"
+              className="w-full h-[400px] group relative overflow-hidden rounded-2xl bg-gray-800 aspect-square hover:transform hover:scale-105 transition-all duration-500"
             >
               <img
                 src={brand.image}
@@ -97,11 +89,6 @@ const Brands = () => {
                 className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white font-bold text-lg lg:text-xl text-center px-4">
-                  {brand.logo}
-                </span>
-              </div>
             </div>
           ))}
         </div>

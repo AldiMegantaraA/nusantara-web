@@ -1,3 +1,7 @@
+import BgBranches1 from "../../../assets/img/bg-branches-1.png";
+import BgBranches2 from "../../../assets/img/bg-branches-2.png";
+import BgBranches3 from "../../../assets/img/bg-branches-3.png";
+
 const Hero = () => {
   const branches = [
     {
@@ -5,54 +9,48 @@ const Hero = () => {
       address: "Jl. MT Haryono Kav. 5 Tebet, Jakarta Selatan, Indonesia 12830",
       type: "Dealer",
       serviceType: "Service Center",
-      image:
-        "https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+      image: BgBranches1,
     },
     {
       name: "Scomadi Bandung",
       address: "Jl. MT Haryono Kav. 5 Tebet, Jakarta Selatan, Indonesia 12830",
       type: "Dealer",
       serviceType: "",
-      image:
-        "https://images.pexels.com/photos/1119796/pexels-photo-1119796.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+      image: BgBranches2,
     },
     {
       name: "Scomadi Bali",
       address: "Jl. MT Haryono Kav. 5 Tebet, Jakarta Selatan, Indonesia 12830",
       type: "Dealer",
       serviceType: "Service Center",
-      image:
-        "https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+      image: BgBranches3,
     },
     {
       name: "Scomadi Jakarta",
       address: "Jl. MT Haryono Kav. 5 Tebet, Jakarta Selatan, Indonesia 12830",
       type: "Dealer",
       serviceType: "Service Center",
-      image:
-        "https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+      image: BgBranches1,
     },
     {
       name: "Scomadi Bandung",
       address: "Jl. MT Haryono Kav. 5 Tebet, Jakarta Selatan, Indonesia 12830",
       type: "Dealer",
       serviceType: "",
-      image:
-        "https://images.pexels.com/photos/1119796/pexels-photo-1119796.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+      image: BgBranches2,
     },
     {
       name: "Scomadi Bali",
       address: "Jl. MT Haryono Kav. 5 Tebet, Jakarta Selatan, Indonesia 12830",
       type: "Dealer",
       serviceType: "Service Center",
-      image:
-        "https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+      image: BgBranches3,
     },
   ];
 
   return (
     <section className="bg-[#0A0A0A] min-h-screen flex items-center">
-      <div className="container mx-auto">
+      <div className="container mx-auto pt-32">
         <div className="text-center">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-32 leading-tight">
             Our presence across regions
@@ -88,34 +86,24 @@ const Hero = () => {
           {branches.map((branch, index) => (
             <div
               key={index}
-              className="bg-gray-700 rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300"
+              className="rounded-2xl hover:transform hover:scale-105 transition-all duration-300"
             >
-              <div className="relative h-48">
+              <div>
                 <img
                   src={branch.image}
                   alt={branch.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
-                <div className="absolute top-4 left-4 flex space-x-2">
-                  <span className="bg-white/90 text-gray-900 px-3 py-1 rounded-full text-xs font-medium">
-                    {branch.type}
-                  </span>
-                  {branch.serviceType && (
-                    <span className="bg-white/90 text-gray-900 px-3 py-1 rounded-full text-xs font-medium">
-                      {branch.serviceType}
-                    </span>
-                  )}
-                </div>
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-[28px] font-bold text-white mb-3">
                   {branch.name}
                 </h3>
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                <p className="text-[#A8A8A8] font-medium text-lg mb-4 leading-relaxed">
                   {branch.address}
                 </p>
-                <button className="text-white border border-gray-500 px-4 py-2 rounded-full text-sm font-medium hover:border-white hover:bg-white/10 transition-all duration-300">
+                <button className="text-white border border-white px-4 py-2 rounded-full text-base font-medium hover:border-white hover:bg-white/10 transition-all duration-300">
                   View on map
                 </button>
               </div>

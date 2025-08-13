@@ -2,6 +2,7 @@ import About from "../../components/About";
 import Branches from "../../components/Branches";
 import Brands from "../../components/Brands";
 import Hero from "../../components/Hero";
+import RoyalEnfield from "../../components/RoyalEnfield";
 import Services from "../../components/Services";
 import Statistics from "../../components/Statistics";
 
@@ -12,6 +13,7 @@ const Home = () => {
       <About />
       <Statistics />
       <Services />
+      <RoyalEnfield />
       <Brands />
       <Branches />
     </div>

@@ -1,6 +1,6 @@
 // import { useNavigate } from "react-router-dom";
 // import ROUTE_PATHNAME from "../../../router/routes.constants";
-import Nusantara from "../../../assets/img/nusantara-logo-footer.svg";
+// import Nusantara from "../../../assets/img/nusantara-logo-footer.svg";
 import NotFound404 from "../../../assets/img/auth-404.svg";
 
 const NotFound404Page = () => {
@@ -9,13 +9,13 @@ const NotFound404Page = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center">
       <div className="text-center w-2/5">
-        <img className="m-auto w-64 mb-12" src={Nusantara} />
+        {/* <img className="m-auto w-64 mb-12" src={Nusantara} /> */}
         <img className="m-auto w-64 mb-8" src={NotFound404} />
         <p className="font-bold text-[36px] leading-[43.2px] mt-6">404</p>
         <p className="font-bold text-[36px] leading-[43.2px] mb-2">
           Page Not Found
         </p>
-        <p className="leading-6 text-[#5F7174] tracking-wide max-w-[480px] mx-auto">
+        <p className="leading-6 font-medium text-[#F2F2F2] tracking-wide max-w-[480px] mx-auto">
           We could not find the page you are looking for. Please check if the
           URL is correct or contact us for help.
         </p>
