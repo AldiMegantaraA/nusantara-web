@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react";
 
 const About = () => {
   return (
-    <section className="bg-[#0A0A0A] py-16 lg:py-24">
+    <section className="bg-[#0A0A0A] py-16 lg:py-24" id="about">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content */}

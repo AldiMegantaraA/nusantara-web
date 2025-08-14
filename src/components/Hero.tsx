@@ -1,13 +1,51 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import NusantaraHeroImage from "../assets/img/nusantara-hero.png";
+import Slidetwo from "../assets/img/slidetwo.jpg";
+import SlideThree from "../assets/img/slidethree.jpg";
+import SlideFour from "../assets/img/slidefour.jpg";
+import { useState } from "react";
 
 const Hero = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
+  const heroImages = [
+    {
+      url: NusantaraHeroImage
+    },
+    {
+      url: Slidetwo
+    },
+    {
+      url: SlideThree
+    },
+    {
+      url: SlideFour
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src={NusantaraHeroImage}
+          src={heroImages[currentSlide].url}
           alt="Nusantara Hero Background"
           className="w-full h-full object-cover"
         />
@@ -15,10 +53,10 @@ const Hero = () => {
       </div>
 
       {/* Navigation Arrows */}
-      <button className="absolute left-4 lg:left-8 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300">
+      <button onClick={prevSlide} className="absolute left-4 lg:left-8 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300">
         <ChevronLeft className="w-6 h-6" />
       </button>
-      <button className="absolute right-4 lg:right-8 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300">
+      <button onClick={nextSlide} className="absolute right-4 lg:right-8 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300">
         <ChevronRight className="w-6 h-6" />
       </button>
 
@@ -53,19 +91,24 @@ const Hero = () => {
               Nusantara Group is your partner in mobility across Indonesia.
             </p>
 
-            <button className="text-xl text-white/80 hover:text-white transition-colors duration-300 flex items-center space-x-2">
+            <button onClick={() => scrollToSection('about')} className="text-xl text-white/80 hover:text-white transition-colors duration-300 flex items-center space-x-2">
               <span>Explore more</span>
-              <ChevronRight className="w-4 h-4" />
+              <ChevronDown className="w-4 h-4" />
             </button>
           </div>
         </div>
 
         {/* Pagination Dots */}
         <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          <div className="w-3 h-3 bg-white rounded-full"></div>
-          <div className="w-3 h-3 bg-white/40 rounded-full"></div>
-          <div className="w-3 h-3 bg-white/40 rounded-full"></div>
-          <div className="w-3 h-3 bg-white/40 rounded-full"></div>
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 ${
+                currentSlide === index ? 'bg-white' : 'bg-white/40 hover:bg-white/60'
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>

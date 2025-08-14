@@ -51,12 +51,7 @@ const Header = () => {
               <div key={item.name} className="relative group">
                 <button
                   className="p-2 flex items-center space-x-1 text-[#F2F2F2] hover:text-white transition-colors duration-200 text-base font-medium"
-                  onMouseEnter={() =>
-                    item.hasDropdown && setIsOurStoryOpen(true)
-                  }
-                  onMouseLeave={() =>
-                    item.hasDropdown && setIsOurStoryOpen(false)
-                  }
+                  
                   onClick={() =>
                     item.hasDropdown && setIsOurStoryOpen(!isOurStoryOpen)
                   }
@@ -76,9 +71,16 @@ const Header = () => {
                 {/* Dropdown Menu */}
                 {item.hasDropdown && isOurStoryOpen && (
                   <div
-                    className="absolute top-8 left-0 mt-2 w-max bg-white rounded-2xl shadow-2xl z-50 overflow-hidden"
-                    onMouseEnter={() => setIsOurStoryOpen(true)}
-                    onMouseLeave={() => setIsOurStoryOpen(false)}
+                    className="fixed top-8 mt-10 left-0 w-screen bg-white shadow-2xl z-50 overflow-hidden"
+                    onClick={() => 
+                      {
+                        if(isOurStoryOpen) {
+                          setIsOurStoryOpen(true)
+                        } else {
+                          setIsOurStoryOpen(false)
+                        }
+                      }
+                    }
                   >
                     <div className="flex gap-0">
                       {/* Our Journey */}

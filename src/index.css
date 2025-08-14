@@ -4,8 +4,12 @@
 
 @font-face {
     font-family: "MyCustomFont"; /* Choose a name for your font */
-    src: local("MyCustomFont"), url("./assets/fonts/Satoshi-Regular.ttf") format("ttf"); /* Adjust path and format */
+    src: url("/assets/fonts/Satoshi-Regular.ttf") format("truetype"); /* Adjust path and format */
     font-weight: normal;
     font-style: normal;
+}
+
+body {
+    font-family: 'MyCustomFont', sans-serif;
 }
 
