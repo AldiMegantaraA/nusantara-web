@@ -1,11 +1,13 @@
-import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown, ChevronRight } from "lucide-react";
 import NusantaraHeroImage from "../assets/img/nusantara-hero.png";
 import Slidetwo from "../assets/img/slidetwo.jpg";
 import SlideThree from "../assets/img/slidethree.jpg";
 import SlideFour from "../assets/img/slidefour.jpg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -55,17 +57,11 @@ const Hero = () => {
       </div>
 
       {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 lg:left-8 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
-      >
-        <ChevronLeft className="w-6 h-6" />
+      <button onClick={prevSlide} className="absolute left-4 lg:left-8 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center text-black hover:bg-white/100 transition-all duration-300">
+        <ArrowLeft className="w-6 h-6" />
       </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 lg:right-8 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
-      >
-        <ChevronRight className="w-6 h-6" />
+      <button onClick={nextSlide} className="absolute right-4 lg:right-8 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/70 backdrop-blur-sm rounded-full flex items-center justify-center text-black hover:bg-white/100 transition-all duration-300">
+        <ArrowRight className="w-6 h-6" />
       </button>
 
       {/* Content */}
@@ -79,7 +75,7 @@ const Hero = () => {
             </h1>
 
             <div className="flex flex-col sm:flex-row gap-4 items-center">
-              <button className="group bg-white text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 transform hover:scale-105">
+              <button onClick={() => navigate('/brands')} className="group bg-white text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 transform hover:scale-105">
                 <span>Explore our brands</span>
                 <div className="w-6 h-6 bg-[#711917] rounded-full flex items-center justify-center">
                   <ChevronRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform duration-300" />
@@ -110,15 +106,13 @@ const Hero = () => {
         </div>
 
         {/* Pagination Dots */}
-        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-28 p-1 left-1/2 transform -translate-x-1/2 flex space-x-2 rounded-2xl bg-white">
           {heroImages.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 ${
-                currentSlide === index
-                  ? "bg-white"
-                  : "bg-white/40 hover:bg-white/60"
+              className={`w-2 h-2 rounded-full transition-all duration-300 hover:scale-125 ${
+                currentSlide === index ? 'bg-black w-[30px]' : 'bg-[#A8A8A8] hover:bg-black'
               }`}
             />
           ))}

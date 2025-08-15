@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight, ExternalLink } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import NusantaraLogo from "../assets/img/nusantara-logo.png";
 import NavbarImage1 from "../assets/img/navbar-image-1.png";
@@ -22,13 +22,12 @@ const Header = () => {
     { name: "Brands", href: "/brands", hasDropdown: false },
     { name: "Branches", href: "/branches", hasDropdown: false },
     { name: "Partnership", hasDropdown: false },
-    { name: "News", hasDropdown: false },
     { name: "Community", hasDropdown: false },
+    { name: "News", hasDropdown: false, href: 'https://www.linkedin.com/company/nusantaragroup' },
   ];
 
   const handleDropdownItemClick = (href: string | undefined) => {
     // For now, just log the navigation - you can implement actual routing later
-    console.log(`Navigating to: ${href}`);
 
     href && navigate(href);
     // setIsOurStoryOpen(false);
@@ -55,9 +54,20 @@ const Header = () => {
                     item.hasDropdown && setIsOurStoryOpen(!isOurStoryOpen)
                   }
                 >
-                  <span onClick={() => handleDropdownItemClick(item?.href)}>
-                    {item.name}
-                  </span>
+                  {
+                    item.name === 'News' ?
+                    <a href={item?.href} target="_blank">
+                      {item.name}
+                    </a>
+                    :
+                    <span onClick={() => handleDropdownItemClick(item?.href)}>
+                      {item.name}
+                    </span>
+                  }
+                  {
+                    item.name === 'News' ?
+                    <ExternalLink size={18} /> : ''
+                  }
                   {item.hasDropdown && (
                     <ChevronDown
                       className={`w-4 h-4 transition-transform duration-200 ${

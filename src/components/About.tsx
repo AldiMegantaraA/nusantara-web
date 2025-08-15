@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import AboutHeroImage from "../assets/img/about-hero.jpg";
 import { ChevronRight } from "lucide-react";
 
 const About = () => {
+  const navigate = useNavigate()
   return (
     <section className="bg-[#0A0A0A] py-16 lg:py-24" id="about">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -9,7 +11,7 @@ const About = () => {
           {/* Content */}
           <div className="order-2 lg:order-1">
             <div className="mb-6">
-              <span className="text-gray-400 text-sm font-medium tracking-wide uppercase">
+              <span className="text-gray-400 text-sm font-medium tracking-wide">
                 — About
               </span>
             </div>
@@ -34,7 +36,7 @@ const About = () => {
             </div>
 
             <div className="mt-8">
-              <button className="group bg-white text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 transform hover:scale-105">
+              <button onClick={() => navigate('/our-story/journey')} className="group bg-white text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 transform hover:scale-105">
                 <span>Discover our story</span>
                 <div className="w-6 h-6 bg-[#711917] rounded-full flex items-center justify-center">
                   <ChevronRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform duration-300" />
