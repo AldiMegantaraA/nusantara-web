@@ -47,7 +47,7 @@ const Services = () => {
   };
 
   return (
-    <section className="bg-[#0A0A0A] py-16 lg:py-24">
+    <section className="bg-[#0A0A0A] h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {
           servicesItem === 'company' ? 

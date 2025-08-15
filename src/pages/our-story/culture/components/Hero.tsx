@@ -13,36 +13,36 @@ const Hero = () => {
           </div>
           <div className="w-full lg:w-1/4 flex flex-col items-start justify-around gap-2 lg:gap-0">
             <div className="flex items-center gap-1">
-              <p className="text-4xl lg:text-6xl font-bold text-[#F4F4F4]">T</p>
-              <p className="text-2xl lg:text-4xl font-bold text-[#F4F4F4]">
+              <p className="text-4xl lg:text-6xl font-bold text-[#F4F4F4] italic">T</p>
+              <p className="text-2xl lg:text-4xl text-[#F4F4F4] italic">
                 enacious
               </p>
             </div>
             <div className="w-4 lg:w-20 border-t-[3px] border-t-[#4B4B4B]" />
             <div className="flex items-center gap-1">
-              <p className="text-4xl lg:text-6xl font-bold text-[#F4F4F4]">R</p>
-              <p className="text-2xl lg:text-4xl font-bold text-[#F4F4F4]">
+              <p className="text-4xl lg:text-6xl font-bold text-[#F4F4F4] italic">R</p>
+              <p className="text-2xl lg:text-4xl text-[#F4F4F4] italic">
                 eliable
               </p>
             </div>
             <div className="w-4 lg:w-20 border-t-[3px] border-t-[#4B4B4B]" />
             <div className="flex items-center gap-1">
-              <p className="text-4xl lg:text-6xl font-bold text-[#F4F4F4]">U</p>
-              <p className="text-2xl lg:text-4xl font-bold text-[#F4F4F4]">
+              <p className="text-4xl lg:text-6xl font-bold text-[#F4F4F4] italic">U</p>
+              <p className="text-2xl lg:text-4xl text-[#F4F4F4] italic">
                 ser-focus
               </p>
             </div>
             <div className="w-4 lg:w-20 border-t-[3px] border-t-[#4B4B4B]" />
             <div className="flex items-center gap-1">
-              <p className="text-4xl lg:text-6xl font-bold text-[#F4F4F4]">S</p>
-              <p className="text-2xl lg:text-4xl font-bold text-[#F4F4F4]">
+              <p className="text-4xl lg:text-6xl font-bold text-[#F4F4F4] italic">S</p>
+              <p className="text-2xl lg:text-4xl text-[#F4F4F4]italic">
                 ynergy
               </p>
             </div>
             <div className="w-4 lg:w-20 border-t-[3px] border-t-[#4B4B4B]" />
             <div className="flex items-center gap-1">
-              <p className="text-4xl lg:text-6xl font-bold text-[#F4F4F4]">T</p>
-              <p className="text-2xl lg:text-4xl font-bold text-[#F4F4F4]">
+              <p className="text-4xl lg:text-6xl font-bold text-[#F4F4F4] italic">T</p>
+              <p className="text-2xl lg:text-4xl text-[#F4F4F4] italic">
                 ransformation
               </p>
             </div>

@@ -46,7 +46,7 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="bg-gradient-to-b from-[#711917] via-[#0A0A0A] to-[#0A0A0A]">
+      {/* <div className="bg-gradient-to-b from-[#711917] via-[#0A0A0A] to-[#0A0A0A]">
         <div className="mx-auto container w-full py-[72px] px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="flex flex-col justify-between h-full">
@@ -71,7 +71,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="relative h-full min-h-screen flex items-center">
         {/* Background Image */}
@@ -85,7 +85,7 @@ const Footer = () => {
         </div>
 
         {/* Content */}
-        <div className="relative pt-32 h-full 2xl:h-screen max-md:h-screen z-10 mx-auto container w-full px-4 sm:px-6 lg:px-8">
+        <div className="relative pt-32 h-full z-10 mx-auto container w-full px-4 sm:px-6 lg:px-8">
           <div className="flex gap-10 flex-col lg:flex-row justify-between items-center lg:items-start text-[#F2F2F2]">
             <div className="flex flex-col justify-center items-start">
               <img src={NusantaraLogo} className="mb-6" />
@@ -129,7 +129,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="text-[#F4F4F4] mt-10 w-1/2 bg-[#711917] p-6 rounded-lg mb-24 2xl:pb-6">
+          {/* <div className="text-[#F4F4F4] mt-10 w-1/2 bg-[#711917] p-6 rounded-lg mb-24 2xl:pb-6">
             <p className="font-medium text-xl mb-4">
               Subscribe to our newsletter and be the first to know about new
               branch openings, exclusive brand updates, and event announcements.
@@ -140,11 +140,11 @@ const Footer = () => {
                 <span>Subscribe</span>
               </button>
             </div>
-          </div>
+          </div> */}
 
           <div className="flex justify-between items-center text-[#A8A8A8]">
             <div>
-              <p className="text-[#A8A8A8] px-8 absolute bottom-8 left-0">
+              <p className="text-[#A8A8A8] px-8">
                 Copyright © PT Nusantara Batavia International
               </p>
             </div>
@@ -152,7 +152,7 @@ const Footer = () => {
             <div>
               <p
                 onClick={scrollToTop}
-                className="text-[#F4F4F4] px-8 absolute bottom-8 right-0 font-medium cursor-pointer hover:text-[#A8A8A8] transition-colors duration-300"
+                className="text-[#F4F4F4] px-8 absolute bottom-20 right-0 font-medium cursor-pointer hover:text-[#A8A8A8] transition-colors duration-300"
               >
                 Back to Top
                 <ChevronUp className="inline-block ml-2 w-6 h-6" />

@@ -2,21 +2,21 @@ import { useState, useEffect } from "react";
 import { ChevronRight } from "lucide-react";
 
 import BgHonda from "../assets/img/bg-honda.png";
-import BgHondaActive from "../assets/img/bg-honda.png";
+import BgHondaActive from "../assets/img/bg-honda-active.png";
 import BgRoyalEnfield from "../assets/img/bg-royal-enfield.png";
-import BgRoyalEnfieldActive from "../assets/img/bg-royal-enfield.png";
+import BgRoyalEnfieldActive from "../assets/img/bg-royal-enfield-active.png";
 import BgHyundai from "../assets/img/bg-hyundai.png";
-import BgHyundaiActive from "../assets/img/bg-hyundai.png";
+import BgHyundaiActive from "../assets/img/bg-hyundai-active.png";
 import BgScomadi from "../assets/img/bg-scomadi.png";
-import BgScomadiActive from "../assets/img/bg-scomadi.png";
+import BgScomadiActive from "../assets/img/bg-scomadi-active.png";
 import BgJeep from "../assets/img/bg-jeep.png";
-import BgJeepActive from "../assets/img/bg-jeep.png";
+import BgJeepActive from "../assets/img/bg-jeep-active.png";
 import BgMercy from "../assets/img/bg-mercy.png";
-import BgMercyActive from "../assets/img/bg-mercy.png";
+import BgMercyActive from "../assets/img/bg-mercy-active.png";
 import BgFord from "../assets/img/bg-ford.png";
-import BgFordActive from "../assets/img/bg-ford.png";
+import BgFordActive from "../assets/img/bg-ford-active.png";
 import BgChevrolet from "../assets/img/bg-chevrolet.png";
-import BgChevroletActive from "../assets/img/bg-chevrolet.png";
+import BgChevroletActive from "../assets/img/bg-chevrolet-active.png";
 import { useNavigate } from "react-router-dom";
 
 const Brands = () => {
@@ -98,7 +98,7 @@ const Brands = () => {
                 <img
                   src={isActive ? brand.imageActive : brand.imageUnactive}
                   alt={brand.name}
-                  className="w-full h-full object-cover opacity-30 group-hover:opacity-100 transition-opacity duration-300"
+                  className="w-full h-full object-cover transition-opacity duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               </div>
