@@ -1,6 +1,6 @@
 import { ChevronUp } from "lucide-react";
 import FooterHeroImage from "../assets/img/footer-hero.png";
-import NusantaraLogo from "../assets/img/nusantara-logo-footer.svg";
+import NusantaraLogo from "../assets/img/nusantara-logo.png";
 import FormHero from "../assets/img/form-hero.png";
 
 const Footer = () => {
@@ -88,7 +88,9 @@ const Footer = () => {
         <div className="relative pt-32 h-full z-10 mx-auto container w-full px-4 sm:px-6 lg:px-8">
           <div className="flex gap-10 flex-col lg:flex-row justify-between items-center lg:items-start text-[#F2F2F2]">
             <div className="flex flex-col justify-center items-start">
-              <img src={NusantaraLogo} className="mb-6" />
+              <div className="w-32">
+                <img src={NusantaraLogo} className="mb-6" />
+              </div>
               <h1 className="text-2xl lg:text-4xl font-bold">
                 Nusantara Group
               </h1>
@@ -119,7 +121,7 @@ const Footer = () => {
                   {menu.menuList.map((item, idx) => (
                     <p
                       key={idx}
-                      className="font-medium mt-2 hover:text-[#A8A8A8] transition-colors duration-300 cursor-pointer"
+                      className="font-medium mt-2 hover:text-[#A8A8A8] transition-colors duration-300 cursor-pointer whitespace-nowrap"
                     >
                       {item}
                     </p>
@@ -152,7 +154,7 @@ const Footer = () => {
             <div>
               <p
                 onClick={scrollToTop}
-                className="text-[#F4F4F4] px-8 absolute bottom-20 right-0 font-medium cursor-pointer hover:text-[#A8A8A8] transition-colors duration-300"
+                className="text-[#F4F4F4] px-8 absolute bottom-20 lg:bottom-0 right-0 font-medium cursor-pointer hover:text-[#A8A8A8] transition-colors duration-300"
               >
                 Back to Top
                 <ChevronUp className="inline-block ml-2 w-6 h-6" />

@@ -35,7 +35,7 @@ const Hero = () => {
             <div className="w-4 lg:w-20 border-t-[3px] border-t-[#4B4B4B]" />
             <div className="flex items-center gap-1">
               <p className="text-4xl lg:text-6xl font-bold text-[#F4F4F4] italic">S</p>
-              <p className="text-2xl lg:text-4xl text-[#F4F4F4]italic">
+              <p className="text-2xl lg:text-4xl text-[#F4F4F4] italic">
                 ynergy
               </p>
             </div>
