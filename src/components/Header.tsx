@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import NusantaraLogo from "../assets/img/nusantara-logo.svg";
+import NusantaraLogo from "../assets/img/nusantara-logo.png";
 import NavbarImage1 from "../assets/img/navbar-image-1.png";
 import NavbarImage2 from "../assets/img/navbar-image-2.png";
 
@@ -36,13 +36,13 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div
             className="flex-shrink-0 cursor-pointer"
             onClick={() => handleDropdownItemClick("/")}
           >
-            <img src={NusantaraLogo} />
+            <img src={NusantaraLogo} className="w-[188px] h-10" />
           </div>
 
           {/* Desktop Navigation */}
@@ -51,7 +51,6 @@ const Header = () => {
               <div key={item.name} className="relative group">
                 <button
                   className="p-2 flex items-center space-x-1 text-[#F2F2F2] hover:text-white transition-colors duration-200 text-base font-medium"
-                  
                   onClick={() =>
                     item.hasDropdown && setIsOurStoryOpen(!isOurStoryOpen)
                   }
@@ -72,15 +71,13 @@ const Header = () => {
                 {item.hasDropdown && isOurStoryOpen && (
                   <div
                     className="fixed top-8 mt-10 left-0 w-screen bg-white shadow-2xl z-50 overflow-hidden"
-                    onClick={() => 
-                      {
-                        if(isOurStoryOpen) {
-                          setIsOurStoryOpen(true)
-                        } else {
-                          setIsOurStoryOpen(false)
-                        }
+                    onClick={() => {
+                      if (isOurStoryOpen) {
+                        setIsOurStoryOpen(true);
+                      } else {
+                        setIsOurStoryOpen(false);
                       }
-                    }
+                    }}
                   >
                     <div className="flex gap-0">
                       {/* Our Journey */}

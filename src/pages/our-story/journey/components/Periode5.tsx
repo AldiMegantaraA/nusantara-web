@@ -10,7 +10,7 @@ const Periode5 = () => {
           <div>
             <div className="flex justify-center gap-2 lg:gap-10 mb-2 lg:mb-4">
               <div className="border border-1 border-[#4B4B4B] w-[200px] h-[200px] flex items-center justify-center rounded-full">
-                <img src={MercyLogo} />
+                <img src={MercyLogo} className="w-[100px] h-[100px]" />
               </div>
               <div className="border border-1 border-[#4B4B4B] w-[200px] h-[200px] flex items-center justify-center rounded-full">
                 <img src={HarleyLogo} />

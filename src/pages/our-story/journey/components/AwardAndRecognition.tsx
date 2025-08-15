@@ -15,8 +15,8 @@ const AwardAndRecognition = () => {
   ];
 
   return (
-    <section className="bg-[#0A0A0A] py-16 lg:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#0A0A0A] pb-16 lg:pb-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="mb-6 text-xl text-[#A8A8A8] font-medium text-center">
           Awards & Recognition
         </h1>

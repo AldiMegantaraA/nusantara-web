@@ -9,24 +9,24 @@ const Hero = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   const heroImages = [
     {
-      url: NusantaraHeroImage
+      url: NusantaraHeroImage,
     },
     {
-      url: Slidetwo
+      url: Slidetwo,
     },
     {
-      url: SlideThree
+      url: SlideThree,
     },
     {
-      url: SlideFour
-    }
+      url: SlideFour,
+    },
   ];
 
   const nextSlide = () => {
@@ -34,10 +34,12 @@ const Hero = () => {
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+    setCurrentSlide(
+      (prev) => (prev - 1 + heroImages.length) % heroImages.length
+    );
   };
 
-  const goToSlide = (index) => {
+  const goToSlide = (index: number) => {
     setCurrentSlide(index);
   };
   return (
@@ -53,10 +55,16 @@ const Hero = () => {
       </div>
 
       {/* Navigation Arrows */}
-      <button onClick={prevSlide} className="absolute left-4 lg:left-8 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300">
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 lg:left-8 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+      >
         <ChevronLeft className="w-6 h-6" />
       </button>
-      <button onClick={nextSlide} className="absolute right-4 lg:right-8 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300">
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 lg:right-8 top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+      >
         <ChevronRight className="w-6 h-6" />
       </button>
 
@@ -91,7 +99,10 @@ const Hero = () => {
               Nusantara Group is your partner in mobility across Indonesia.
             </p>
 
-            <button onClick={() => scrollToSection('about')} className="text-xl text-white/80 hover:text-white transition-colors duration-300 flex items-center space-x-2">
+            <button
+              onClick={() => scrollToSection("about")}
+              className="text-xl text-white/80 hover:text-white transition-colors duration-300 flex items-center space-x-2"
+            >
               <span>Explore more</span>
               <ChevronDown className="w-4 h-4" />
             </button>
@@ -105,7 +116,9 @@ const Hero = () => {
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 hover:scale-125 ${
-                currentSlide === index ? 'bg-white' : 'bg-white/40 hover:bg-white/60'
+                currentSlide === index
+                  ? "bg-white"
+                  : "bg-white/40 hover:bg-white/60"
               }`}
             />
           ))}

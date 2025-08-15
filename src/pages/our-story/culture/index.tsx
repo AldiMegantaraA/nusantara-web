@@ -1,14 +1,14 @@
 import Hero from "./components/Hero";
 import CultureDescription from "./components/CultureDescription";
-import RoyalEnfield from "../../../components/RoyalEnfield";
+import ImageCustom from "../../../components/ImageCustom";
 
 const Culture = () => {
   return (
-    <div>
+    <>
       <Hero />
       <CultureDescription />
-      <RoyalEnfield />
-    </div>
+      <ImageCustom type="jeep" />
+    </>
   );
 };
 

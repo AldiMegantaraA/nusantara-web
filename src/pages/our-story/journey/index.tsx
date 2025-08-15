@@ -7,13 +7,14 @@ import Periode3 from "./components/Periode3";
 import Periode4 from "./components/Periode4";
 import Periode5 from "./components/Periode5";
 import Periode6 from "./components/Periode6";
-import RoyalEnfield from "../../../components/RoyalEnfield";
+import IndonesiaMap from "./components/IndonesiaMap";
+import ImageCustom from "../../../components/ImageCustom";
 
 const Journey = () => {
   return (
     <>
       <Hero />
-      <RoyalEnfield />
+      <ImageCustom type="mercy" />
       <Operation />
       <AwardAndRecognition />
       <AnEndlessProgression />
@@ -22,6 +23,8 @@ const Journey = () => {
       <Periode4 />
       <Periode5 />
       <Periode6 />
+      <IndonesiaMap />
+      <ImageCustom type="jeep" />
     </>
   );
 };

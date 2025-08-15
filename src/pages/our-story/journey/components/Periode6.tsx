@@ -1,7 +1,6 @@
 import JeepLogo from "../../../../assets/img/jeep-logo.png";
 import RoyalEnfieldLogo from "../../../../assets/img/royal-enfield-logo.png";
-import PeugeotLogo from "../../../../assets/img/peugeot2-logo.png";
-import BMWLogo from "../../../../assets/img/bmw2-logo.png";
+import ScomadiLogo from "../../../../assets/img/scomadi-logo.png";
 
 const Periode6 = () => {
   return (
@@ -9,7 +8,7 @@ const Periode6 = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
           <div>
-            <div className="flex justify-center gap-2 lg:gap-10 mb-2 lg:mb-10">
+            <div className="flex justify-center gap-2 lg:gap-10 mb-2 lg:mb-4">
               <div className="border border-1 border-[#4B4B4B] w-[200px] h-[200px] flex items-center justify-center rounded-full">
                 <img src={JeepLogo} />
               </div>
@@ -17,12 +16,9 @@ const Periode6 = () => {
                 <img src={RoyalEnfieldLogo} />
               </div>
             </div>
-            <div className="flex justify-center gap-2 lg:gap-10 mb-2 lg:mb-10">
+            <div className="flex justify-center gap-4">
               <div className="border border-1 border-[#4B4B4B] w-[200px] h-[200px] flex items-center justify-center rounded-full">
-                <img src={PeugeotLogo} />
-              </div>
-              <div className="border border-1 border-[#4B4B4B] w-[200px] h-[200px] flex items-center justify-center rounded-full">
-                <img src={BMWLogo} />
+                <img src={ScomadiLogo} />
               </div>
             </div>
           </div>

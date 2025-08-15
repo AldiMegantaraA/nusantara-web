@@ -44,10 +44,10 @@ const Hero = () => {
   ];
 
   return (
-    <section className="bg-[#0A0A0A] min-h-screen flex items-center">
-      <div className="container mx-auto">
+    <section className="bg-[#0A0A0A] px-8 min-h-screen flex items-center">
+      <div className="container mx-auto pt-32">
         <div className="text-center">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-32 leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-16 lg:mb-32 leading-tight">
             Trusted Brands, <br />
             Proven Performance
           </h2>
@@ -58,7 +58,7 @@ const Hero = () => {
           {brands.map((brand, index) => (
             <div
               key={index}
-              className="w-full h-[400px] group relative overflow-hidden rounded-2xl bg-gray-800 aspect-square hover:transform hover:scale-105 transition-all duration-500"
+              className="w-full h-[200px] lg:h-[400px] group relative overflow-hidden rounded-2xl bg-gray-800 aspect-square hover:transform hover:scale-105 transition-all duration-500"
             >
               <img
                 src={brand.image}

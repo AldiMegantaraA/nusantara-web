@@ -49,15 +49,15 @@ const Hero = () => {
   ];
 
   return (
-    <section className="bg-[#0A0A0A] min-h-screen flex items-center">
+    <section className="bg-[#0A0A0A] px-8 min-h-screen flex items-center">
       <div className="container mx-auto pt-32">
         <div className="text-center">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-32 leading-tight">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-16 lg:mb-32 leading-tight">
             Our presence across regions
           </h2>
         </div>
 
-        <div className="flex justify-center flex-wrap gap-3 mb-32">
+        <div className="flex justify-center flex-wrap gap-3 mb-16 lg:mb-32">
           <button className="px-6 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors duration-300">
             Honda
           </button>

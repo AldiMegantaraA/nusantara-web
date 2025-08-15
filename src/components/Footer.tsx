@@ -22,6 +22,19 @@ const Footer = () => {
       ],
     },
     {
+      menuName: "Brands",
+      menuList: [
+        "Honda",
+        "Royal Enfield",
+        "Hyundai",
+        "Scomadi",
+        "Jeep",
+        "Mercedes-Benz",
+        "Ford",
+        "Chevrolet",
+      ],
+    },
+    {
       menuName: "Social",
       menuList: ["WhatsApp", "LinkedIn"],
     },
@@ -34,7 +47,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="bg-gradient-to-b from-[#711917] via-[#0A0A0A] to-[#0A0A0A]">
-        <div className="mx-auto max-w-7xl w-full py-[72px] px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto container w-full py-[72px] px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="flex flex-col justify-between h-full">
               <div>
@@ -43,13 +56,6 @@ const Footer = () => {
                 </p>
                 <p className="text-[#A8A8A8] font-medium text-base lg:text-xl mt-6">
                   We will respond to you as soon as possible.
-                </p>
-              </div>
-
-              <div>
-                <p className="text-[#A8A8A8] font-medium text-xl">
-                  You’re always welcome to book a private appointment with us at
-                  our <u>Jakarta office</u>.
                 </p>
               </div>
             </div>
@@ -67,7 +73,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="relative min-h-screen flex items-center overflow-hidden">
+      <div className="relative h-full min-h-screen flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -79,9 +85,9 @@ const Footer = () => {
         </div>
 
         {/* Content */}
-        <div className="relative pt-32 h-full 2xl:h-screen max-md:h-screen z-10 mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
+        <div className="relative pt-32 h-full 2xl:h-screen max-md:h-screen z-10 mx-auto container w-full px-4 sm:px-6 lg:px-8">
           <div className="flex gap-10 flex-col lg:flex-row justify-between items-center lg:items-start text-[#F2F2F2]">
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-start">
               <img src={NusantaraLogo} className="mb-6" />
               <h1 className="text-2xl lg:text-4xl font-bold">
                 Nusantara Group
@@ -101,29 +107,25 @@ const Footer = () => {
           <div className="text-[#F2F2F2] flex gap-4 flex-col lg:flex-row justify-center lg:justify-between">
             <div className="w-full lg:w-1/2">
               <p className="font-medium text-[#A8A8A8]">
-                Nusantara Group is registered and operates in Indonesia under
-                the legal name PT Nusantara Batavia International. <br />
-                <br /> Our head office and management team are based in Jakarta.
+                Nusantara Group is registered and operates in Indonesia.
               </p>
             </div>
-            <div className="w-full lg:w-1/2">
-              <div className="flex justify-center lg:justify-end gap-[100px]">
-                {FooterMenu.map((menu, index) => (
-                  <div key={index} className="mb-6">
-                    <h1 className="font-bold text-[#A8A8A8] text-xl mb-3">
-                      {menu.menuName}
-                    </h1>
-                    {menu.menuList.map((item, idx) => (
-                      <p
-                        key={idx}
-                        className="font-medium mt-2 hover:text-[#A8A8A8] transition-colors duration-300 cursor-pointer"
-                      >
-                        {item}
-                      </p>
-                    ))}
-                  </div>
-                ))}
-              </div>
+            <div className="w-full lg:w-1/2 grid grid-cols-1 lg:grid-cols-4 justify-center lg:justify-end gap-2 lg:gap-[100px]">
+              {FooterMenu.map((menu, index) => (
+                <div key={index} className="mb-6">
+                  <h1 className="font-bold text-[#A8A8A8] text-xl mb-3">
+                    {menu.menuName}
+                  </h1>
+                  {menu.menuList.map((item, idx) => (
+                    <p
+                      key={idx}
+                      className="font-medium mt-2 hover:text-[#A8A8A8] transition-colors duration-300 cursor-pointer"
+                    >
+                      {item}
+                    </p>
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
 

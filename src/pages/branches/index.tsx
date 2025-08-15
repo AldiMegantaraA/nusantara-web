@@ -1,11 +1,11 @@
 import Hero from "./components/Hero";
-import RoyalEnfield from "../../components/RoyalEnfield";
+import ImageCustom from "../../components/ImageCustom";
 
 const Journey = () => {
   return (
     <>
       <Hero />
-      <RoyalEnfield />
+      <ImageCustom type="jeep" />
     </>
   );
 };

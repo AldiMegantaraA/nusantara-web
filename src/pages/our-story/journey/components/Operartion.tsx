@@ -3,7 +3,7 @@ import AboutHeroImage from "../../../../assets/img/about-hero.jpg";
 const Operation = () => {
   return (
     <section className="bg-[#0A0A0A] py-16 lg:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image */}
           <div className="order-1 lg:order-1">
@@ -11,7 +11,7 @@ const Operation = () => {
               <img
                 src={AboutHeroImage}
                 alt="Modern automotive showroom"
-                className="w-full h-[500px] lg:h-[600px] object-cover transform hover:scale-105 transition-transform duration-700"
+                className="w-full h-full lg:h-full object-cover transform hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
             </div>
@@ -20,7 +20,8 @@ const Operation = () => {
           {/* Content */}
           <div className="order-2 lg:order-2">
             <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-[#F2F2F2] mb-8 leading-tight">
-              Lorem ipsum sir dolor amet lorem ipsum sir dolor amet.
+              Nusantara Group: a nationwide automotive company with a 50-year
+              history
             </h2>
 
             <div className="space-y-6 text-[#A8A8A8] font-medium text-lg leading-relaxed">
