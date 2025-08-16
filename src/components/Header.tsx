@@ -20,9 +20,9 @@ const Header = () => {
       ],
     },
     { name: "Brands", href: "/brands", hasDropdown: false },
-    { name: "Branches", href: "/branches", hasDropdown: false },
-    { name: "Partnership", hasDropdown: false },
-    { name: "Community", hasDropdown: false },
+    // { name: "Branches", href: "/branches", hasDropdown: false },
+    // { name: "Partnership", hasDropdown: false },
+    // { name: "Community", hasDropdown: false },
     { name: "News", hasDropdown: false, href: 'https://www.linkedin.com/company/nusantaragroup' },
   ];
 

@@ -4,7 +4,7 @@ import CountUp from 'react-countup';
 const Statistics = () => {
   const stats = [
     {
-      number: 25,
+      number: 28,
       label: "Years of automotive innovation",
     },
     {
@@ -12,11 +12,11 @@ const Statistics = () => {
       label: "Partnered brands",
     },
     {
-      number: 40,
+      number: 39,
       label: "Brand locations",
     },
     {
-      number: 100000,
+      number: 80000,
       label: "Satisfied customers",
     },
   ];

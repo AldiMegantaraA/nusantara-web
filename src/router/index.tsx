@@ -5,6 +5,7 @@ import homeRoutes from "./routes/home";
 import ourStoryRoutes from "./routes/our-story";
 import brandRoutes from "./routes/brands";
 import branchesRoutes from "./routes/branches";
+import adminRoutes from "./routes/admin";
 
 const routes = [
   {
@@ -25,6 +26,10 @@ const routes = [
       {
         path: "branches",
         children: branchesRoutes,
+      },
+      {
+        path: "admin",
+        children: adminRoutes,
       },
     ],
   },
