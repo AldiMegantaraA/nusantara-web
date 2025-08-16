@@ -11,8 +11,6 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, activeTab, onTabCha
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'news', label: 'News Management', icon: FileText },
-    // { id: 'users', label: 'Users', icon: Users },
-    // { id: 'settings', label: 'Settings', icon: Settings },
   ];
 
   return (
