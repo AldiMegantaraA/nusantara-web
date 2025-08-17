@@ -1,5 +1,8 @@
-import React from 'react';
-import { LayoutDashboard, FileText, LogOut } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { LayoutDashboard, FileText, LogOut } from "lucide-react";
+import store from "store";
+import { notification } from "antd";
+import { useNavigate } from "react-router-dom";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -7,11 +10,24 @@ interface AdminLayoutProps {
   onTabChange: (tab: string) => void;
 }
 
-const AdminLayout: React.FC<AdminLayoutProps> = ({ children, activeTab, onTabChange }) => {
+const AdminLayout: React.FC<AdminLayoutProps> = ({
+  children,
+  activeTab,
+  onTabChange,
+}) => {
+  const navigate = useNavigate();
+  const authorized = store.get("authorized");
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'news', label: 'News Management', icon: FileText },
+    { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+    { id: "news", label: "News Management", icon: FileText },
   ];
+  const [triggerLogout, setTriggerLogout] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!authorized) {
+      navigate(`/admin/login`);
+    }
+  }, [navigate, authorized, triggerLogout]);
 
   return (
     <div className="min-h-screen bg-gray-100 flex">
@@ -31,7 +47,9 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, activeTab, onTabCha
                 key={item.id}
                 onClick={() => onTabChange(item.id)}
                 className={`w-full flex items-center space-x-3 px-6 py-3 text-left hover:bg-gray-50 transition-colors duration-200 ${
-                  activeTab === item.id ? 'bg-gray-50 border-r-2 border-gray-900 text-gray-900' : 'text-gray-600'
+                  activeTab === item.id
+                    ? "bg-gray-50 border-r-2 border-gray-900 text-gray-900"
+                    : "text-gray-600"
                 }`}
               >
                 <Icon className="w-5 h-5" />
@@ -42,7 +60,17 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, activeTab, onTabCha
         </nav>
 
         <div className="absolute bottom-6 left-6">
-          <button className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors duration-200">
+          <button
+            onClick={() => {
+              setTriggerLogout(!triggerLogout);
+              store.remove("authorized");
+              notification.success({
+                message: "Logout Successful",
+                description: "You have been successfully logged out!",
+              });
+            }}
+            className="flex items-center space-x-3 text-gray-600 hover:text-gray-900 transition-colors duration-200"
+          >
             <LogOut className="w-5 h-5" />
             <span className="font-medium">Logout</span>
           </button>
@@ -51,9 +79,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children, activeTab, onTabCha
 
       {/* Main Content */}
       <div className="flex-1 overflow-auto">
-        <div className="p-8">
-          {children}
-        </div>
+        <div className="p-8">{children}</div>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import { ChevronUp } from "lucide-react";
 import FooterHeroImage from "../assets/img/footer-hero.png";
 import NusantaraLogo from "../assets/img/nusantara-logo.png";
-import FormHero from "../assets/img/form-hero.png";
 
 const Footer = () => {
   const scrollToTop = () => {

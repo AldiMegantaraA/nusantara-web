@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Save, X, Upload, Eye } from 'lucide-react';
-import { NewsPost, NewsFormData } from '../../../types/news';
+import React, { useState } from "react";
+import { Save, X, Upload, Eye, ChevronLeftCircle } from "lucide-react";
+import { NewsPost, NewsFormData } from "../../../types/news";
 
 interface NewsFormProps {
   post?: NewsPost;
@@ -10,14 +10,14 @@ interface NewsFormProps {
 
 const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
   const [formData, setFormData] = useState<NewsFormData>({
-    title: post?.title || '',
-    content: post?.content || '',
-    excerpt: post?.excerpt || '',
-    author: post?.author || '',
-    imageUrl: post?.imageUrl || '',
-    category: post?.category || 'general',
-    status: post?.status || 'draft',
-    tags: post?.tags?.join(', ') || '',
+    title: post?.title || "",
+    content: post?.content || "",
+    excerpt: post?.excerpt || "",
+    author: post?.author || "",
+    imageUrl: post?.imageUrl || "",
+    category: post?.category || "general",
+    status: post?.status || "draft",
+    tags: post?.tags?.join(", ") || "",
   });
 
   const [isPreview, setIsPreview] = useState(false);
@@ -27,18 +27,22 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
     onSave(formData);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const categories = [
-    'general',
-    'automotive',
-    'technology',
-    'business',
-    'events',
-    'partnerships'
+    "general",
+    "automotive",
+    "technology",
+    "business",
+    "events",
+    "partnerships",
   ];
 
   if (isPreview) {
@@ -56,7 +60,10 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
         <div className="p-6">
           <div className="mb-6">
             <img
-              src={formData.imageUrl || 'https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'}
+              src={
+                formData.imageUrl ||
+                "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop"
+              }
               alt={formData.title}
               className="w-full h-64 object-cover rounded-lg"
             />
@@ -66,10 +73,14 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
               {formData.category}
             </span>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">{formData.title}</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            {formData.title}
+          </h1>
           <p className="text-lg text-gray-600 mb-6">{formData.excerpt}</p>
           <div className="prose max-w-none">
-            <div className="whitespace-pre-wrap text-gray-800">{formData.content}</div>
+            <div className="whitespace-pre-wrap text-gray-800">
+              {formData.content}
+            </div>
           </div>
           <div className="mt-6 pt-6 border-t border-gray-200">
             <p className="text-sm text-gray-500">By {formData.author}</p>
@@ -81,9 +92,14 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-lg">
-      <div className="p-6 border-b border-gray-200">
+      <div className="flex items-center gap-4 p-6 border-b border-gray-200">
+        <ChevronLeftCircle
+          onClick={onCancel}
+          className="cursor-pointer"
+          size="24"
+        />
         <h2 className="text-2xl font-bold text-gray-900">
-          {post ? 'Edit News Post' : 'Create New Post'}
+          {post ? "Edit News Post" : "Create New Post"}
         </h2>
       </div>
 
@@ -161,7 +177,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
             >
-              {categories.map(category => (
+              {categories.map((category) => (
                 <option key={category} value={category}>
                   {category.charAt(0).toUpperCase() + category.slice(1)}
                 </option>
@@ -257,7 +273,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
               className="px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 flex items-center space-x-2"
             >
               <Save className="w-4 h-4" />
-              <span>{post ? 'Update' : 'Create'} Post</span>
+              <span>{post ? "Update" : "Create"} Post</span>
             </button>
           </div>
         </div>

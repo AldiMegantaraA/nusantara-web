@@ -1,49 +1,59 @@
-import React, { useState } from 'react';
-import AdminLayout from './components/AdminLayout';
-import Dashboard from './components/Dashboard';
-import NewsList from './components/NewsList';
-import NewsForm from './components/NewsForm';
-import { NewsPost, NewsFormData } from '../../types/news';
+import { useState } from "react";
+import AdminLayout from "./components/AdminLayout";
+import Dashboard from "./components/Dashboard";
+import NewsList from "./components/NewsList";
+import NewsForm from "./components/NewsForm";
+import { NewsPost, NewsFormData } from "../../types/news";
 
 const AdminPage = () => {
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState("dashboard");
   const [posts, setPosts] = useState<NewsPost[]>([
     {
-      id: '1',
-      title: 'Nusantara Group Expands Partnership with Leading Automotive Brands',
-      content: 'We are excited to announce our expanded partnership with several leading automotive brands, bringing more innovative vehicles and services to the Indonesian market. This strategic expansion reflects our commitment to providing customers with the best automotive solutions across various segments.',
-      excerpt: 'Nusantara Group announces strategic expansion with leading automotive brands to enhance customer offerings.',
-      author: 'Joe Ferry',
-      publishedAt: '2024-01-15T10:00:00Z',
-      imageUrl: 'https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
-      category: 'partnerships',
-      status: 'published',
-      tags: ['partnership', 'expansion', 'automotive']
+      id: "1",
+      title:
+        "Nusantara Group Expands Partnership with Leading Automotive Brands",
+      content:
+        "We are excited to announce our expanded partnership with several leading automotive brands, bringing more innovative vehicles and services to the Indonesian market. This strategic expansion reflects our commitment to providing customers with the best automotive solutions across various segments.",
+      excerpt:
+        "Nusantara Group announces strategic expansion with leading automotive brands to enhance customer offerings.",
+      author: "Joe Ferry",
+      publishedAt: "2024-01-15T10:00:00Z",
+      imageUrl:
+        "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
+      category: "partnerships",
+      status: "published",
+      tags: ["partnership", "expansion", "automotive"],
     },
     {
-      id: '2',
-      title: 'New Service Center Opens in Jakarta',
-      content: 'Our latest service center in Jakarta is now operational, featuring state-of-the-art equipment and highly trained technicians. This facility will serve customers across the greater Jakarta area with premium automotive services.',
-      excerpt: 'State-of-the-art service center opens in Jakarta with premium automotive services.',
-      author: 'Sarah Johnson',
-      publishedAt: '2024-01-10T14:30:00Z',
-      imageUrl: 'https://images.pexels.com/photos/1213294/pexels-photo-1213294.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
-      category: 'business',
-      status: 'published',
-      tags: ['service', 'jakarta', 'expansion']
+      id: "2",
+      title: "New Service Center Opens in Jakarta",
+      content:
+        "Our latest service center in Jakarta is now operational, featuring state-of-the-art equipment and highly trained technicians. This facility will serve customers across the greater Jakarta area with premium automotive services.",
+      excerpt:
+        "State-of-the-art service center opens in Jakarta with premium automotive services.",
+      author: "Sarah Johnson",
+      publishedAt: "2024-01-10T14:30:00Z",
+      imageUrl:
+        "https://images.pexels.com/photos/1213294/pexels-photo-1213294.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
+      category: "business",
+      status: "published",
+      tags: ["service", "jakarta", "expansion"],
     },
     {
-      id: '3',
-      title: 'Upcoming Electric Vehicle Launch Event',
-      content: 'Join us for an exclusive preview of the latest electric vehicles coming to Indonesia. This event will showcase cutting-edge technology and sustainable mobility solutions.',
-      excerpt: 'Exclusive preview event for latest electric vehicles and sustainable mobility solutions.',
-      author: 'Michael Chen',
-      publishedAt: '2024-01-08T09:00:00Z',
-      imageUrl: 'https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop',
-      category: 'events',
-      status: 'draft',
-      tags: ['electric', 'event', 'technology']
-    }
+      id: "3",
+      title: "Upcoming Electric Vehicle Launch Event",
+      content:
+        "Join us for an exclusive preview of the latest electric vehicles coming to Indonesia. This event will showcase cutting-edge technology and sustainable mobility solutions.",
+      excerpt:
+        "Exclusive preview event for latest electric vehicles and sustainable mobility solutions.",
+      author: "Michael Chen",
+      publishedAt: "2024-01-08T09:00:00Z",
+      imageUrl:
+        "https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
+      category: "events",
+      status: "draft",
+      tags: ["electric", "event", "technology"],
+    },
   ]);
 
   const [editingPost, setEditingPost] = useState<NewsPost | null>(null);
@@ -53,15 +63,20 @@ const AdminPage = () => {
   const handleSave = (data: NewsFormData) => {
     if (editingPost) {
       // Update existing post
-      setPosts(prev => prev.map(post => 
-        post.id === editingPost.id 
-          ? {
-              ...post,
-              ...data,
-              tags: data.tags.split(',').map(tag => tag.trim()).filter(tag => tag)
-            }
-          : post
-      ));
+      setPosts((prev) =>
+        prev.map((post) =>
+          post.id === editingPost.id
+            ? {
+                ...post,
+                ...data,
+                tags: data.tags
+                  .split(",")
+                  .map((tag) => tag.trim())
+                  .filter((tag) => tag),
+              }
+            : post
+        )
+      );
       setEditingPost(null);
     } else {
       // Create new post
@@ -69,16 +84,19 @@ const AdminPage = () => {
         id: Date.now().toString(),
         ...data,
         publishedAt: new Date().toISOString(),
-        tags: data.tags.split(',').map(tag => tag.trim()).filter(tag => tag)
+        tags: data.tags
+          .split(",")
+          .map((tag) => tag.trim())
+          .filter((tag) => tag),
       };
-      setPosts(prev => [newPost, ...prev]);
+      setPosts((prev) => [newPost, ...prev]);
       setIsCreating(false);
     }
   };
 
   const handleDelete = (id: string) => {
-    if (window.confirm('Are you sure you want to delete this post?')) {
-      setPosts(prev => prev.filter(post => post.id !== id));
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      setPosts((prev) => prev.filter((post) => post.id !== id));
     }
   };
 
@@ -107,7 +125,7 @@ const AdminPage = () => {
   };
 
   const renderContent = () => {
-    if (activeTab === 'news') {
+    if (activeTab === "news") {
       if (isCreating || editingPost) {
         return (
           <NewsForm
@@ -151,15 +169,22 @@ const AdminPage = () => {
                   {viewingPost.category}
                 </span>
               </div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{viewingPost.title}</h1>
-              <p className="text-lg text-gray-600 mb-6">{viewingPost.excerpt}</p>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                {viewingPost.title}
+              </h1>
+              <p className="text-lg text-gray-600 mb-6">
+                {viewingPost.excerpt}
+              </p>
               <div className="prose max-w-none">
-                <div className="whitespace-pre-wrap text-gray-800">{viewingPost.content}</div>
+                <div className="whitespace-pre-wrap text-gray-800">
+                  {viewingPost.content}
+                </div>
               </div>
               <div className="mt-6 pt-6 border-t border-gray-200 flex justify-between items-center">
                 <p className="text-sm text-gray-500">By {viewingPost.author}</p>
                 <p className="text-sm text-gray-500">
-                  Published on {new Date(viewingPost.publishedAt).toLocaleDateString()}
+                  Published on{" "}
+                  {new Date(viewingPost.publishedAt).toLocaleDateString()}
                 </p>
               </div>
             </div>
@@ -178,7 +203,7 @@ const AdminPage = () => {
       );
     }
 
-    if (activeTab === 'dashboard') {
+    if (activeTab === "dashboard") {
       return <Dashboard posts={posts} />;
     }
 
