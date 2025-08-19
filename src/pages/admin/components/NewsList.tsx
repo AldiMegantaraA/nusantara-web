@@ -8,9 +8,10 @@ interface NewsListProps {
   onDelete: (id: string) => void;
   onView: (post: NewsPost) => void;
   onCreate: () => void;
+  loading: boolean;
 }
 
-const NewsList: React.FC<NewsListProps> = ({ posts, onEdit, onDelete, onView, onCreate }) => {
+const NewsList: React.FC<NewsListProps> = ({ posts, onEdit, onDelete, onView, onCreate, loading }) => {
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -127,21 +128,32 @@ const NewsList: React.FC<NewsListProps> = ({ posts, onEdit, onDelete, onView, on
         </table>
       </div>
 
-      {posts.length === 0 && (
-        <div className="p-12 text-center">
-          <div className="text-gray-400 mb-4">
-            <FileText className="w-12 h-12 mx-auto" />
-          </div>
-          <h3 className="text-lg font-medium text-gray-900 mb-2">No news posts yet</h3>
-          <p className="text-gray-500 mb-4">Get started by creating your first news post.</p>
-          <button
-            onClick={onCreate}
-            className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200"
-          >
-            Create First Post
-          </button>
-        </div>
-      )}
+      {
+        <>
+        {
+          loading ?
+          <h4 className='p-4 text-center'>Loading...</h4>
+          :
+          <>
+          {posts.length === 0 && (
+            <div className="p-12 text-center">
+              <div className="text-gray-400 mb-4">
+                <FileText className="w-12 h-12 mx-auto" />
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">No news posts yet</h3>
+              <p className="text-gray-500 mb-4">Get started by creating your first news post.</p>
+              <button
+                onClick={onCreate}
+                className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200"
+                >
+                Create First Post
+              </button>
+            </div>
+          )}
+          </>
+        }
+        </>
+      }
     </div>
   );
 };

@@ -40,7 +40,7 @@ const Login = () => {
   const onFinish = () => {
     const payload = {
       username: formdata.username,
-      password: encryptPassword(formdata.password),
+      password: formdata.password,
     };
 
     if (

@@ -1,60 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AdminLayout from "./components/AdminLayout";
 import Dashboard from "./components/Dashboard";
 import NewsList from "./components/NewsList";
 import NewsForm from "./components/NewsForm";
 import { NewsPost, NewsFormData } from "../../types/news";
+import { fetchNews } from "../../service/api";
 
 const AdminPage = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
-  const [posts, setPosts] = useState<NewsPost[]>([
-    {
-      id: "1",
-      title:
-        "Nusantara Group Expands Partnership with Leading Automotive Brands",
-      content:
-        "We are excited to announce our expanded partnership with several leading automotive brands, bringing more innovative vehicles and services to the Indonesian market. This strategic expansion reflects our commitment to providing customers with the best automotive solutions across various segments.",
-      excerpt:
-        "Nusantara Group announces strategic expansion with leading automotive brands to enhance customer offerings.",
-      author: "Joe Ferry",
-      publishedAt: "2024-01-15T10:00:00Z",
-      imageUrl:
-        "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
-      category: "partnerships",
-      status: "published",
-      tags: ["partnership", "expansion", "automotive"],
-    },
-    {
-      id: "2",
-      title: "New Service Center Opens in Jakarta",
-      content:
-        "Our latest service center in Jakarta is now operational, featuring state-of-the-art equipment and highly trained technicians. This facility will serve customers across the greater Jakarta area with premium automotive services.",
-      excerpt:
-        "State-of-the-art service center opens in Jakarta with premium automotive services.",
-      author: "Sarah Johnson",
-      publishedAt: "2024-01-10T14:30:00Z",
-      imageUrl:
-        "https://images.pexels.com/photos/1213294/pexels-photo-1213294.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
-      category: "business",
-      status: "published",
-      tags: ["service", "jakarta", "expansion"],
-    },
-    {
-      id: "3",
-      title: "Upcoming Electric Vehicle Launch Event",
-      content:
-        "Join us for an exclusive preview of the latest electric vehicles coming to Indonesia. This event will showcase cutting-edge technology and sustainable mobility solutions.",
-      excerpt:
-        "Exclusive preview event for latest electric vehicles and sustainable mobility solutions.",
-      author: "Michael Chen",
-      publishedAt: "2024-01-08T09:00:00Z",
-      imageUrl:
-        "https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop",
-      category: "events",
-      status: "draft",
-      tags: ["electric", "event", "technology"],
-    },
-  ]);
+  const [posts, setPosts] = useState<NewsPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadNews() {
+      try {
+        const data = await fetchNews();
+        setPosts(data);
+      } catch (err) {
+        console.error("Failed to load news:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadNews();
+  }, []);
 
   const [editingPost, setEditingPost] = useState<NewsPost | null>(null);
   const [isCreating, setIsCreating] = useState(false);
@@ -199,12 +168,13 @@ const AdminPage = () => {
           onDelete={handleDelete}
           onView={handleView}
           onCreate={handleCreate}
+          loading={loading}
         />
       );
     }
 
     if (activeTab === "dashboard") {
-      return <Dashboard posts={posts} />;
+      return <Dashboard posts={posts} loading={loading} />;
     }
 
     return (

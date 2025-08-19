@@ -4,9 +4,10 @@ import { NewsPost } from '../../../types/news';
 
 interface DashboardProps {
   posts: NewsPost[];
+  loading: boolean;
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ posts }) => {
+const Dashboard: React.FC<DashboardProps> = ({ posts, loading }) => {
   const stats = [
     {
       title: 'Total Posts',
@@ -75,38 +76,47 @@ const Dashboard: React.FC<DashboardProps> = ({ posts }) => {
           <h2 className="text-xl font-bold text-gray-900">Recent Posts</h2>
         </div>
         <div className="p-6">
-          {recentPosts.length > 0 ? (
-            <div className="space-y-4">
-              {recentPosts.map((post) => (
-                <div key={post.id} className="flex items-center space-x-4 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
-                  <img
-                    src={post.imageUrl}
-                    alt={post.title}
-                    className="w-16 h-16 object-cover rounded-lg"
-                  />
-                  <div className="flex-1">
-                    <h3 className="font-medium text-gray-900">{post.title}</h3>
-                    <p className="text-sm text-gray-500">{post.excerpt}</p>
-                    <div className="flex items-center space-x-4 mt-2">
-                      <span className="text-xs text-gray-400">By {post.author}</span>
-                      <span className={`text-xs px-2 py-1 rounded-full ${
-                        post.status === 'published' 
-                          ? 'bg-green-100 text-green-800' 
-                          : 'bg-yellow-100 text-yellow-800'
-                      }`}>
-                        {post.status}
-                      </span>
+          {
+            loading? 
+            <h4 className='p-4 text-center'>Loading...</h4>
+            :
+            <>
+            
+            {recentPosts.length > 0 ? (
+              <div className="space-y-4">
+                {recentPosts.map((post) => (
+                  <div key={post.id} className="flex items-center space-x-4 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                    <img
+                      src={post.imageUrl}
+                      alt={post.title}
+                      className="w-16 h-16 object-cover rounded-lg"
+                    />
+                    <div className="flex-1">
+                      <h3 className="font-medium text-gray-900">{post.title}</h3>
+                      <p className="text-sm text-gray-500">{post.excerpt}</p>
+                      <div className="flex items-center space-x-4 mt-2">
+                        <span className="text-xs text-gray-400">By {post.author}</span>
+                        <span className={`text-xs px-2 py-1 rounded-full ${
+                          post.status === 'published' 
+                            ? 'bg-green-100 text-green-800' 
+                            : 'bg-yellow-100 text-yellow-800'
+                        }`}>
+                          {post.status}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-8">
-              <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-500">No posts created yet</p>
-            </div>
-          )}
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8">
+                <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                <p className="text-gray-500">No posts created yet</p>
+              </div>
+            )}
+            </>
+            
+          }
         </div>
       </div>
     </div>

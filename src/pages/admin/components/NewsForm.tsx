@@ -8,6 +8,8 @@ interface NewsFormProps {
   onCancel: () => void;
 }
 
+const API_URL = "https://script.google.com/macros/s/AKfycbzitNyzBUP5QVrZCNd1j3tdiA7b6qgQMm4rAX6zadBqhYAwVItUmtjMz4uuAY12Xh4/exec";
+
 const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
   const [formData, setFormData] = useState<NewsFormData>({
     title: post?.title || "",
@@ -21,10 +23,38 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
   });
 
   const [isPreview, setIsPreview] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSave(formData);
+    setLoading(true);
+
+    try {
+      const method = "POST";
+      const response = await fetch(API_URL, {
+        method,
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+        mode: 'cors',
+        redirect: 'follow',
+        body: 
+          post ? JSON.stringify({ id: post.id, ...formData, tags: Array.isArray(post.tags) ? post.tags.join(", ") : post.tags, }) : JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        onSave(formData); // panggil callback untuk update state parent
+      } else {
+        alert(result.message || "Failed to save data");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error connecting to API");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (
@@ -273,7 +303,13 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
               className="px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 flex items-center space-x-2"
             >
               <Save className="w-4 h-4" />
-              <span>{post ? "Update" : "Create"} Post</span>
+              {
+                loading ?
+                <span>Loading..</span>
+                :
+                <span>{post ? "Update" : "Create"} Post</span>
+
+              }
             </button>
           </div>
         </div>
