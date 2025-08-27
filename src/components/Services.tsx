@@ -180,9 +180,7 @@ const Services = () => {
                 {/* Description */}
                 <div className="font-medium space-y-6 mt-32 text-[#A8A8A8] text-xl leading-relaxed">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet accumsan nulla, 
-                    nec placerat dolor. Vestibulum congue eu libero nec pulvinar. 
-                    Curabitur diam nisi, efficitur ac hendrerit id, fermentum pretium tortor.
+                  Nusantara Group’s brand portfolio consists of trusted automotive and motorcycle marques. It is the company’s commitment to fulfill the high expectations from customers to the brands.  With a vast network across Indonesia, Nusantara Group is the right partner for convenience and mobility.
                   </p>
                 </div>
               </div>
@@ -239,9 +237,7 @@ const Services = () => {
                 {/* Description */}
                 <div className="font-medium space-y-6 mt-32 text-[#A8A8A8] text-xl leading-relaxed">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet accumsan nulla, 
-                    nec placerat dolor. Vestibulum congue eu libero nec pulvinar. 
-                    Curabitur diam nisi, efficitur ac hendrerit id, fermentum pretium tortor.
+                  The Nusantara Group provides quality maintenance and servicing for its customers, even up to 24-hour assistance. Trained and qualified personnel of the company ensure worry-free continuous mobility.
                   </p>
                 </div>
               </div>

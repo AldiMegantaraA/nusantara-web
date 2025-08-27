@@ -1,23 +1,35 @@
 import { ChevronUp } from "lucide-react";
 import FooterHeroImage from "../assets/img/footer-hero.png";
 import NusantaraLogo from "../assets/img/nusantara-logo.png";
+import ContactForm from "./ContactForm";
+import ModalSubscribe from "./ModalSubscribe";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const Navigate = useNavigate()
+  const [isOpen, setIsOpen] = useState(false);
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  const whatsappNumber = '+6285283984973';
+  const defaultMessage = 'Hello! I would like to know more about Nusantara Group services.';
 
   const FooterMenu = [
     {
       menuName: "Navigation",
       menuList: [
-        "Our Story",
-        "Brands",
-        "Branches",
-        "Partnership",
-        "News",
-        "Community",
-        "Careers",
+        { name: "Our Journey", href: "/our-story/journey", hasDropdown: false },
+        { name: "Our Culture", href: "/our-story/culture", hasDropdown: false },
+        { name: "Brands", href: "/brands", hasDropdown: false },
+        { name: "Branches", href: "/branches", hasDropdown: false },
+        // { name: "Partnership", hasDropdown: false },
+        // { name: "Community", hasDropdown: false },
+        {
+          name: "News",
+          hasDropdown: false,
+          href: "/news",
+        },
       ],
     },
     {
@@ -35,7 +47,16 @@ const Footer = () => {
     },
     {
       menuName: "Social",
-      menuList: ["WhatsApp", "LinkedIn"],
+      menuList: [
+        {
+          name: "WhatsApp",
+          href: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`,
+        }, 
+        {
+          name: "LinkedIn",
+          href: `https://www.linkedin.com/company/nusantaragroup`,
+        }, 
+      ],
     },
     {
       menuName: "Legal",
@@ -43,34 +64,17 @@ const Footer = () => {
     },
   ];
 
+  const handleDropdownItemClick = (href: string | undefined) => {
+    // For now, just log the navigation - you can implement actual routing later
+
+    return href && Navigate(href);
+    // setIsOurStoryOpen(false);
+  };
+
   return (
+    <>
     <footer>
-      {/* <div className="bg-gradient-to-b from-[#711917] via-[#0A0A0A] to-[#0A0A0A]">
-        <div className="mx-auto container w-full py-[72px] px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="flex flex-col justify-between h-full">
-              <div>
-                <p className="text-[#F2F2F2] font-bold text-4xl lg:text-6xl">
-                  Get in touch with our Customer Service
-                </p>
-                <p className="text-[#A8A8A8] font-medium text-base lg:text-xl mt-6">
-                  We will respond to you as soon as possible.
-                </p>
-              </div>
-            </div>
-            <div className="order- lg:order-2">
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                <img
-                  src={FormHero}
-                  alt="Modern automotive showroom"
-                  className="w-full  object-cover transform hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
+      <ContactForm />
 
       <div className="relative h-full min-h-screen flex items-center">
         {/* Background Image */}
@@ -118,7 +122,30 @@ const Footer = () => {
                     {menu.menuName}
                   </h1>
                   {menu.menuList.map((item, idx) => (
+                    menu.menuName === 'Navigation' ? 
+                      <p
+                        key={idx}
+                        onClick={() => handleDropdownItemClick(item?.href)}
+                        className="font-medium mt-2 hover:text-[#A8A8A8] transition-colors duration-300 cursor-pointer whitespace-nowrap"
+                      >
+                        {item.name}
+                      </p>
+                    :
+                    menu.menuName === 'Social' ? 
                     <p
+                      key={idx}
+                      className="font-medium mt-2 hover:text-[#A8A8A8] transition-colors duration-300 cursor-pointer whitespace-nowrap"
+                    >
+                      <a
+                        target="_blank"
+                        href={item?.href}
+                        className="font-medium mt-2 hover:text-[#A8A8A8] transition-colors duration-300 cursor-pointer whitespace-nowrap"
+                      >
+                        {item.name}
+                      </a>
+                    </p>
+                    :
+                      <p
                       key={idx}
                       className="font-medium mt-2 hover:text-[#A8A8A8] transition-colors duration-300 cursor-pointer whitespace-nowrap"
                     >
@@ -130,22 +157,22 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* <div className="text-[#F4F4F4] mt-10 w-1/2 bg-[#711917] p-6 rounded-lg mb-24 2xl:pb-6">
+          <div className="text-[#F4F4F4] mt-10 md:w-1/2 w-full  bg-[#711917] p-6 rounded-lg mb-24 2xl:pb-6">
             <p className="font-medium text-xl mb-4">
               Subscribe to our newsletter and be the first to know about new
               branch openings, exclusive brand updates, and event announcements.
             </p>
 
             <div className="mt-8">
-              <button className="group bg-[#F4F4F4] text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 transform hover:scale-105">
+              <button type="button" onClick={() => setIsOpen(true)} className="group bg-[#F4F4F4] text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 transform hover:scale-105">
                 <span>Subscribe</span>
               </button>
             </div>
-          </div> */}
+          </div>
 
           <div className="flex justify-between items-center text-[#A8A8A8]">
             <div>
-              <p className="text-[#A8A8A8] px-8">
+              <p className="text-[#A8A8A8]">
                 Copyright © PT Nusantara Batavia International
               </p>
             </div>
@@ -163,6 +190,9 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+
+    <ModalSubscribe isOpenModal={isOpen} onClose={() => setIsOpen(false)} />
+    </>
   );
 };
 

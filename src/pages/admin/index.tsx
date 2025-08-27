@@ -5,16 +5,29 @@ import NewsList from "./components/NewsList";
 import NewsForm from "./components/NewsForm";
 import { NewsPost, NewsFormData } from "../../types/news";
 import { fetchNews } from "../../service/api";
+import SubscribeList from "./components/SubscribeList";
+import MessageList from "./components/MessageList";
 
 const AdminPage = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [posts, setPosts] = useState<NewsPost[]>([]);
+  const [subscribe, setSubscribe] = useState<{id: '', email: '', joinDate: ''}[]>([]);
+  const [message, setMessage] = useState<{
+        id: '',
+        name: '', 
+        phoneNumber: '', 
+        category: '', 
+        companyName: '',
+        email: '',
+        message: '',
+        date: ''
+    }[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadNews() {
       try {
-        const data = await fetchNews();
+        const data = await fetchNews("news");
         setPosts(data);
       } catch (err) {
         console.error("Failed to load news:", err);
@@ -23,6 +36,28 @@ const AdminPage = () => {
       }
     }
     loadNews();
+    async function loadSubscribe() {
+      try {
+        const data = await fetchNews("subscribe");
+        setSubscribe(data);
+      } catch (err) {
+        console.error("Failed to load news:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadSubscribe();
+    async function loadMessage() {
+      try {
+        const data = await fetchNews("message");
+        setMessage(data);
+      } catch (err) {
+        console.error("Failed to load news:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadMessage();
   }, []);
 
   const [editingPost, setEditingPost] = useState<NewsPost | null>(null);
@@ -175,6 +210,14 @@ const AdminPage = () => {
 
     if (activeTab === "dashboard") {
       return <Dashboard posts={posts} loading={loading} />;
+    }
+
+    if (activeTab === "subscribe") {
+      return <SubscribeList subscribe={subscribe} loading={loading} />;
+    }
+
+    if (activeTab === "message") {
+      return <MessageList message={message} loading={loading} />;
     }
 
     return (

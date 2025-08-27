@@ -6,6 +6,7 @@ import ourStoryRoutes from "./routes/our-story";
 import brandRoutes from "./routes/brands";
 import branchesRoutes from "./routes/branches";
 import adminRoutes from "./routes/admin";
+import newsRoutes from "./routes/news";
 
 const routes = [
   {
@@ -30,6 +31,10 @@ const routes = [
       {
         path: "admin",
         children: adminRoutes,
+      },
+      {
+        path: "news",
+        children: newsRoutes,
       },
     ],
   },

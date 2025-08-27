@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { LayoutDashboard, FileText, LogOut } from "lucide-react";
+import { LayoutDashboard, FileText, LogOut, UserIcon, MessageCircle } from "lucide-react";
 import store from "store";
 import { notification } from "antd";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,8 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
     { id: "news", label: "News Management", icon: FileText },
+    { id: "subscribe", label: "Subscribe Management", icon: UserIcon },
+    { id: "message", label: "Message Management", icon: MessageCircle },
   ];
   const [triggerLogout, setTriggerLogout] = useState<boolean>(false);
 

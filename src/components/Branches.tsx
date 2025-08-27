@@ -1,46 +1,33 @@
 import { useState } from "react";
-import { ChevronDown, ChevronRight } from "lucide-react";
-import BgBranches1 from "../assets/img/bg-branches-1.png";
-import BgBranches2 from "../assets/img/bg-branches-2.png";
-import BgBranches3 from "../assets/img/bg-branches-3.png";
+import { ChevronDown, ChevronRight, Mail, MapPin, Phone } from "lucide-react";
+import branchesData from "../pages/branches/data";
 
 const Branches = () => {
-  const [selectedBrand, setSelectedBrand] = useState("Scomadi");
+  const [selectedBrand, setSelectedBrand] = useState('Honda');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const brands = [
-    "Scomadi",
-    "Honda",
-    "Royal Enfield",
-    "Hyundai",
-    "Mercedes",
-    "Ford",
-    "Chevrolet",
+    'Honda',
+    'Scomadi',
+    'Royal Enfield',
+    'Hyundai',
+    'Ford',
   ];
 
-  const branches = [
-    {
-      name: "Scomadi Jakarta",
-      address: "Jl. MT Haryono Kav. 5 Tebet, Jakarta Selatan, Indonesia 12830",
-      type: "Dealer",
-      serviceType: "Service Center",
-      image: BgBranches1,
-    },
-    {
-      name: "Scomadi Bandung",
-      address: "Jl. MT Haryono Kav. 5 Tebet, Jakarta Selatan, Indonesia 12830",
-      type: "Dealer",
-      serviceType: "",
-      image: BgBranches2,
-    },
-    {
-      name: "Scomadi Bali",
-      address: "Jl. MT Haryono Kav. 5 Tebet, Jakarta Selatan, Indonesia 12830",
-      type: "Dealer",
-      serviceType: "Service Center",
-      image: BgBranches3,
-    },
-  ];
+  
+
+  const currentBranches = branchesData[selectedBrand] || [];
+
+  const handleBrandSelect = (brand) => {
+    setSelectedBrand(brand);
+    setIsDropdownOpen(false);
+  };
+
+  const handleViewOnMap = (branch) => {
+    // You can implement Google Maps integration here
+    console.log('View on map:', branch);
+    // Example: window.open(`https://maps.google.com/?q=${encodeURIComponent(branch.address)}`);
+  };
 
   return (
     <section className="bg-[#4B4B4B] py-16 lg:py-24">
@@ -54,14 +41,13 @@ const Branches = () => {
               </span>
             </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Lorem ipsum
+              Nusantara Group <br/> Branches
             </h2>
           </div>
 
           <div className="lg:max-w-md">
             <p className="text-[#A8A8A8] text-[28px] font-medium mb-6 leading-relaxed">
-              Lorem ipsum sir dolor amet Lorem ipsum sir dolor amet Lorem ipsum
-              sir dolor amet Lorem ipsum sir dolor amet.
+            We trust that our services will complement your mobility wherever you are located. See our locations and select your preferred brand and branch.
             </p>
           </div>
         </div>
@@ -86,15 +72,12 @@ const Branches = () => {
               </button>
 
               {isDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 bg-gray-700 rounded-lg shadow-lg z-10 min-w-[120px]">
+                <div className="absolute top-full left-0 p-1 mt-2 bg-[#0A0A0A] rounded-lg shadow-lg z-10 min-w-[120px]">
                   {brands.map((brand) => (
                     <button
                       key={brand}
-                      onClick={() => {
-                        setSelectedBrand(brand);
-                        setIsDropdownOpen(false);
-                      }}
-                      className="block w-full text-left px-4 py-2 text-white hover:bg-gray-600 first:rounded-t-lg last:rounded-b-lg transition-colors duration-200"
+                      onClick={() => handleBrandSelect(brand)}
+                      className="block w-full text-left px-4 py-2 text-white hover:bg-[#711917] rounded-lg transition-colors duration-200"
                     >
                       {brand}
                     </button>
@@ -107,29 +90,49 @@ const Branches = () => {
 
         {/* Branches Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {branches.map((branch, index) => (
+          {currentBranches.map((branch, index) => (
             <div
               key={index}
-              className="rounded-2xl hover:transform hover:scale-105 transition-all duration-300"
+              className="hover:transform hover:scale-105 transition-all duration-300"
             >
-              <div>
+              <div className="w-full h-64 overflow-hidden rounded-2xl">
                 <img
                   src={branch.image}
                   alt={branch.name}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
               </div>
 
-              <div className="p-6">
+              <div className="py-6">
                 <h3 className="text-[28px] font-bold text-white mb-3">
                   {branch.name}
                 </h3>
-                <p className="text-[#A8A8A8] font-medium text-lg mb-4 leading-relaxed">
+                <p className="text-[#A8A8A8] font-medium text-lg leading-relaxed">
                   {branch.address}
                 </p>
-                <button className="text-white border border-white px-4 py-2 rounded-full text-base font-medium hover:border-white hover:bg-white/10 transition-all duration-300">
-                  View on map
-                </button>
+                <p className="text-[#A8A8A8] font-medium text-lg mb-4 leading-relaxed">
+                  {branch.city}
+                </p>
+                <div className="flex items-start space-x-2">
+                  <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(branch.name)}`} target="_blank" className="flex items-start space-x-2 text-gray-300 mb-4 border border-white rounded-full w-fit px-4 py-2 text-base font-medium hover:border-white hover:bg-white/10 transition-all duration-300">
+                    <MapPin className="w-4 h-4 mt-1 flex-shrink-0" /> 
+                    <button className="text-white">
+                      Maps
+                    </button>
+                  </a>
+                  <a href={`tel:${branch.number}`} className="flex items-start space-x-2 text-gray-300 mb-4 border border-white rounded-full w-fit px-4 py-2 text-base font-medium hover:border-white hover:bg-white/10 transition-all duration-300">
+                    <Phone className="w-4 h-4 mt-1 flex-shrink-0" /> 
+                    <button className="text-white">
+                      Phone
+                    </button>
+                  </a>
+                  <a href={`mailto:${branch.email}`} target="_blank" className="flex items-start space-x-2 text-gray-300 mb-4 border border-white rounded-full w-fit px-4 py-2 text-base font-medium hover:border-white hover:bg-white/10 transition-all duration-300">
+                    <Mail className="w-4 h-4 mt-1 flex-shrink-0" /> 
+                    <button className="text-white">
+                      Email
+                    </button>
+                  </a>
+                </div>
               </div>
             </div>
           ))}

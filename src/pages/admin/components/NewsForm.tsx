@@ -31,7 +31,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
 
     try {
       const method = "POST";
-      const response = await fetch(API_URL, {
+      const response = await fetch(`${API_URL}?type=news`, {
         method,
         headers: {
           'Content-Type': 'text/plain',
@@ -39,7 +39,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
         mode: 'cors',
         redirect: 'follow',
         body: 
-          post ? JSON.stringify({ id: post.id, ...formData, tags: Array.isArray(post.tags) ? post.tags.join(", ") : post.tags, }) : JSON.stringify(formData),
+          post ? JSON.stringify({ section: 'news', id: post.id, ...formData, tags: Array.isArray(post.tags) ? post.tags.join(", ") : post.tags, }) : JSON.stringify({section: 'news', ...formData}),
       });
 
       const result = await response.json();

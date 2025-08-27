@@ -20,13 +20,13 @@ const Header = () => {
       ],
     },
     { name: "Brands", href: "/brands", hasDropdown: false },
-    // { name: "Branches", href: "/branches", hasDropdown: false },
+    { name: "Branches", href: "/branches", hasDropdown: false },
     // { name: "Partnership", hasDropdown: false },
     // { name: "Community", hasDropdown: false },
     {
       name: "News",
       hasDropdown: false,
-      href: "https://www.linkedin.com/company/nusantaragroup",
+      href: "/news",
     },
   ];
 
@@ -58,16 +58,9 @@ const Header = () => {
                     item.hasDropdown && setIsOurStoryOpen(!isOurStoryOpen)
                   }
                 >
-                  {item.name === "News" ? (
-                    <a href={item?.href} target="_blank">
-                      {item.name}
-                    </a>
-                  ) : (
-                    <span onClick={() => handleDropdownItemClick(item?.href)}>
-                      {item.name}
-                    </span>
-                  )}
-                  {item.name === "News" ? <ExternalLink size={18} /> : ""}
+                  <span onClick={() => handleDropdownItemClick(item?.href)}>
+                    {item.name}
+                  </span>
                   {item.hasDropdown && (
                     <ChevronDown
                       className={`w-4 h-4 transition-transform duration-200 ${
