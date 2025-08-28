@@ -11,7 +11,9 @@ const Branches = () => {
     'Scomadi',
     'Royal Enfield',
     'Hyundai',
+    'Jeep',
     'Ford',
+    'Mercedes-benz',
   ];
 
   
@@ -77,7 +79,7 @@ const Branches = () => {
                     <button
                       key={brand}
                       onClick={() => handleBrandSelect(brand)}
-                      className="block w-full text-left px-4 py-2 text-white hover:bg-[#711917] rounded-lg transition-colors duration-200"
+                      className="block w-full text-left text-nowrap px-4 py-2 text-white hover:bg-[#711917] rounded-lg transition-colors duration-200"
                     >
                       {brand}
                     </button>
@@ -95,11 +97,11 @@ const Branches = () => {
               key={index}
               className="hover:transform hover:scale-105 transition-all duration-300"
             >
-              <div className="w-full h-64 overflow-hidden rounded-2xl">
+              <div className="w-80 h-80 overflow-hidden rounded-2xl">
                 <img
                   src={branch.image}
                   alt={branch.name}
-                  className="w-full h-full object-cover"
+                  className="w-80 h-full object-cover object-right"
                 />
               </div>
 

@@ -9,13 +9,16 @@ import scoMksr from "../../assets/img/scoMks.png";
 import reAntasari from "../../assets/img/reAntasari.png";
 import reBali from "../../assets/img/reBali.png";
 import reBdg from "../../assets/img/reBandung.png";
+import reBekasi from "../../assets/img/reBekasi.png";
 import reBogor from "../../assets/img/reBogor.png";
 import reDepok from "../../assets/img/reDepok.png";
 import reSerpong from "../../assets/img/reSerpong.png";
 import reSby from "../../assets/img/reSby.png";
+import reYogya from "../../assets/img/reYogya.png";
 import hyundaiBnjr from "../../assets/img/hyundaiBnjr.png";
 import fordMt from "../../assets/img/fordMt.png";
 import fordDepok from "../../assets/img/fordDepok.png";
+import mercy from "../../assets/img/mercy.jpg";
 
 const branchesData = {
     Honda: [
@@ -129,7 +132,7 @@ const branchesData = {
         city: 'Bekasi Selatan, Jawa Barat 17144',
         number: '+628119578099',
         email: 'nusantara.royalenfield@gmail.com',
-        image: reBdg
+        image: reBekasi
       },
       {
         id: 5,
@@ -174,7 +177,7 @@ const branchesData = {
         city: 'Yogyakarta 55143',
         number: '+6285727572068',
         email: 'nusantara.royalenfield@gmail.com',
-        image: reSby
+        image: reYogya
       },
     ],
     Hyundai: [
@@ -188,21 +191,32 @@ const branchesData = {
         image: hyundaiBnjr
       }
     ],
-    Mercedes: [
+    Jeep: [
       {
         id: 1,
-        name: 'Mercedes Jakarta',
-        address: 'Jl. Thamrin No. 1, Jakarta',
-        city: 'Pusat, Indonesia 10310',
-        number: '+625113271000',
-        email: 'cro.hyundai.bjm@nusantara-group.com',
-        image: hondaMT
-      }
+        name: 'Jeep Nusantara Star Service MTH',
+        address: 'Jl. MT Haryono  Kav. 5, Kebon Baru, Tebet',
+        city: 'Jakarta Selatan 12830',
+        number: '+6285283984973',
+        email: 'info@honda-nusantara.com',
+        image: fordMt
+      },
+    ],
+    'Mercedes-benz': [
+      {
+        id: 1,
+        name: 'Mercedes-Benz Nusantara Star Service MTH',
+        address: 'Jl. MT Haryono  Kav. 5, Kebon Baru, Tebet',
+        city: 'Jakarta Selatan 12830',
+        number: '+6285283984973',
+        email: 'info@honda-nusantara.com',
+        image: mercy
+      },
     ],
     Ford: [
       {
         id: 1,
-        name: 'Ford MT Haryono',
+        name: 'Ford Nusantara Star Service - MTH',
         address: 'Jl. MT Haryono  Kav. 5, Kebon Baru, Tebet',
         city: 'Jakarta Selatan 12830',
         number: '+6285283984973',
@@ -211,7 +225,7 @@ const branchesData = {
       },
       {
         id: 2,
-        name: 'Ford Depok',
+        name: 'Ford Nusantara Star Service - Depok',
         address: 'Jl. Margonda Raya No.28, Kemiri Muka, Beji',
         city: 'Depok, Jawa Barat 16423',
         number: '+6285283984973',

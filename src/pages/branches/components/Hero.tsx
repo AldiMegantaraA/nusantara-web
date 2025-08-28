@@ -11,7 +11,9 @@ const Hero = () => {
     'Scomadi',
     'Royal Enfield',
     'Hyundai',
+    'Jeep',
     'Ford',
+    'Mercedes-benz',
   ];
 
   const branches = branchesData
@@ -43,7 +45,7 @@ const Hero = () => {
           <button
             key={brand}
             onClick={() => handleBrandSelect(brand)}
-            className={selectedBrand === brand ? `px-6 py-2 bg-white text-gray-900 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors duration-300` : 'px-6 py-2 border border-gray-600 text-gray-300 rounded-full text-sm font-medium hover:border-gray-400 hover:text-white transition-colors duration-300'}
+            className={selectedBrand === brand ? `px-6 py-2 bg-white text-gray-900 text-nowrap rounded-full text-sm font-medium hover:bg-gray-100 transition-colors duration-300` : 'px-6 py-2 border border-gray-600 text-gray-300 rounded-full text-sm font-medium hover:border-gray-400 hover:text-white transition-colors duration-300'}
           >
             {brand}
           </button>
@@ -57,13 +59,24 @@ const Hero = () => {
               key={index}
               className="hover:transform hover:scale-105 transition-all duration-300"
             >
-              <div className="w-full h-64 overflow-hidden rounded-2xl">
-                <img
-                  src={branch.image}
-                  alt={branch.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              {
+                branch.name === 'Royal Enfield Depok' || branch.name === 'Royal Enfield Bogor' ? 
+                <div className="w-80 h-80 overflow-hidden rounded-2xl">
+                  <img
+                    src={branch.image}
+                    alt={branch.name}
+                    className="w-80 h-full object-cover object-right"
+                  />
+                </div>
+                :
+                <div className="w-80 h-80 overflow-hidden rounded-2xl">
+                  <img
+                    src={branch.image}
+                    alt={branch.name}
+                    className="w-80 h-full object-cover"
+                  />
+                </div>
+              }
 
               <div className="p-6">
                 <h3 className="text-[28px] font-bold text-white mb-3">
@@ -71,6 +84,9 @@ const Hero = () => {
                 </h3>
                 <p className="text-[#A8A8A8] font-medium text-lg mb-4 leading-relaxed">
                   {branch.address}
+                </p>
+                <p className="text-[#A8A8A8] font-medium text-lg mb-4 leading-relaxed">
+                  {branch.city}
                 </p>
                 <div className="flex items-start space-x-2">
                   <div className="flex items-start space-x-2 text-gray-300 mb-4 border border-white rounded-full w-fit px-4 py-2 text-base font-medium hover:border-white hover:bg-white/10 transition-all duration-300">
