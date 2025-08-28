@@ -53,14 +53,22 @@ const Brands = () => {
         {/* Header */}
         {
           route === '/brands' ? 
-          <div className="text-center">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-18 lg:mb-32 mt-12 leading-tight">
-              Trusted Brands, <br />
-              Proven Performance
-            </h2>
-            <h4 className="text-[240px] font-bold text-white/10 absolute top-52 left-44 leading-tight hidden lg:flex">
-              BRANDS
-            </h4>
+          <div className="relative w-full flex flex-col items-center justify-center py-12 lg:py-32 overflow-hidden">
+            {/* Background text */}
+            <h1
+              className="absolute text-[20vw] md:text-[15vw] top-20 sm:top-12 lg:top-32 font-extrabold text-white/5 uppercase tracking-widest select-none"
+              style={{ zIndex: 0 }}
+            >
+              Brands
+            </h1>
+
+            {/* Foreground text */}
+            <div className="relative z-10 text-center">
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-snug">
+                Trusted Brands, <br />
+                Proven Performance
+              </h2>
+            </div>
           </div>
           :
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12">

@@ -8,12 +8,12 @@ const Branches = () => {
 
   const brands = [
     'Honda',
-    'Scomadi',
     'Royal Enfield',
     'Hyundai',
+    'Scomadi',
     'Jeep',
-    'Ford',
     'Mercedes-benz',
+    'Ford',
   ];
 
   
@@ -97,13 +97,33 @@ const Branches = () => {
               key={index}
               className="hover:transform hover:scale-105 transition-all duration-300"
             >
-              <div className="w-80 h-80 overflow-hidden rounded-2xl">
-                <img
-                  src={branch.image}
-                  alt={branch.name}
-                  className="w-80 h-full object-cover object-right"
-                />
-              </div>
+              {
+                branch.name === 'Royal Enfield Depok' || branch.name === 'Royal Enfield Bogor' ? 
+                <div className="w-80 h-80 overflow-hidden rounded-2xl">
+                  <img
+                    src={branch.image}
+                    alt={branch.name}
+                    className="w-80 h-full object-cover object-right"
+                  />
+                </div>
+                :
+                branch.name === 'Hyundai Banjarmasin' ? 
+                <div className="w-full h-80 overflow-hidden rounded-2xl">
+                  <img
+                    src={branch.image}
+                    alt={branch.name}
+                    className="w-full h-full object-fill"
+                  />
+                </div>
+                :
+                <div className="w-80 h-80 overflow-hidden rounded-2xl">
+                  <img
+                    src={branch.image}
+                    alt={branch.name}
+                    className="w-80 h-full object-cover"
+                  />
+                </div>
+              }
 
               <div className="py-6">
                 <h3 className="text-[28px] font-bold text-white mb-3">

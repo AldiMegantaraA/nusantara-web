@@ -8,12 +8,12 @@ const Hero = () => {
 
   const brands = [
     'Honda',
-    'Scomadi',
     'Royal Enfield',
     'Hyundai',
+    'Scomadi',
     'Jeep',
-    'Ford',
     'Mercedes-benz',
+    'Ford',
   ];
 
   const branches = branchesData
@@ -69,6 +69,15 @@ const Hero = () => {
                   />
                 </div>
                 :
+                branch.name === 'Hyundai Banjarmasin' ? 
+                <div className="w-full h-80 overflow-hidden rounded-2xl">
+                  <img
+                    src={branch.image}
+                    alt={branch.name}
+                    className="w-full h-full object-fill"
+                  />
+                </div>
+                :
                 <div className="w-80 h-80 overflow-hidden rounded-2xl">
                   <img
                     src={branch.image}
@@ -78,7 +87,7 @@ const Hero = () => {
                 </div>
               }
 
-              <div className="p-6">
+              <div className="py-6">
                 <h3 className="text-[28px] font-bold text-white mb-3">
                   {branch.name}
                 </h3>
