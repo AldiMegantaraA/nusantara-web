@@ -31,16 +31,16 @@ const brands = [
     title: "Scomadi",
     desc: "Scomadi is a British scooter brand founded in 2005, by Frank Sanderson and Paul Melici, known for blending classic Italian scooter styling with modern engineering. Inspired by the iconic Lambretta designs of the 1960s, Scomadi produces retro-styled scooters that appeal to enthusiasts seeking vintage looks with contemporary performance and reliability. Popular models like the Turismo Leggera and Turismo Technica feature sleek lines, chrome detailing, and modern conveniences such as efficient engines, improved suspension, and advanced braking systems. Scomadi is recognized for its craftsmanship, limited-edition colour options, and “built to order” philosophy, making each scooter unique. The brand embodies style, individuality, and the spirit of classic scootering.",
   },
-  {
-    src: Jeep,
-    title: "Jeep",
-    desc: "Jeep, the American automobile brand founded in 1941, is best known for its rugged, off-road-capable vehicles. Originally developed for military use during World War II, the Willys MB became the blueprint for civilian Jeeps after the war. Jeep’s signature features include the seven-slot grille, boxy design, and exceptional 4x4 capability. Models like the Wrangler, Cherokee, and Grand Cherokee are popular for their durability, versatility, and adventure-ready performance. The brand has a strong heritage in outdoor exploration and overlanding, symbolizing freedom and capability. Jeep is widely recognized as a pioneer in the SUV segment, blending off-road toughness with everyday usability.",
-  },
-  {
-    src: Mercy,
-    title: "Mercedes-Benz",
-    desc: "Mercedes-Benz, founded in 1926 in Stuttgart, Germany, is a world-leading luxury automobile manufacturer known for combining elegance, performance, and innovation. The brand’s origins trace back to Karl Benz’s 1886 invention of the first gasoline-powered car, the Benz Patent-Motorwagen. Mercedes-Benz is renowned for its premium sedans, SUVs, coupes, and sports cars, with models like the S-Class, E-Class, and G-Class symbolizing prestige and engineering excellence. They are pioneers in automotive safety, comfort, and technology, introducing innovations like ABS, airbags, and advanced driver-assistance systems. The brand’s slogan, “The Best or Nothing,” reflects its commitment to craftsmanship, luxury, and cutting-edge performance for discerning drivers worldwide.",
-  },
+  // {
+  //   src: Jeep,
+  //   title: "Jeep",
+  //   desc: "Jeep, the American automobile brand founded in 1941, is best known for its rugged, off-road-capable vehicles. Originally developed for military use during World War II, the Willys MB became the blueprint for civilian Jeeps after the war. Jeep’s signature features include the seven-slot grille, boxy design, and exceptional 4x4 capability. Models like the Wrangler, Cherokee, and Grand Cherokee are popular for their durability, versatility, and adventure-ready performance. The brand has a strong heritage in outdoor exploration and overlanding, symbolizing freedom and capability. Jeep is widely recognized as a pioneer in the SUV segment, blending off-road toughness with everyday usability.",
+  // },
+  // {
+  //   src: Mercy,
+  //   title: "Mercedes-Benz",
+  //   desc: "Mercedes-Benz, founded in 1926 in Stuttgart, Germany, is a world-leading luxury automobile manufacturer known for combining elegance, performance, and innovation. The brand’s origins trace back to Karl Benz’s 1886 invention of the first gasoline-powered car, the Benz Patent-Motorwagen. Mercedes-Benz is renowned for its premium sedans, SUVs, coupes, and sports cars, with models like the S-Class, E-Class, and G-Class symbolizing prestige and engineering excellence. They are pioneers in automotive safety, comfort, and technology, introducing innovations like ABS, airbags, and advanced driver-assistance systems. The brand’s slogan, “The Best or Nothing,” reflects its commitment to craftsmanship, luxury, and cutting-edge performance for discerning drivers worldwide.",
+  // },
   {
     src: Ford,
     title: "Ford",

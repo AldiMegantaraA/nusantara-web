@@ -26,8 +26,8 @@ const Brands = () => {
     { name: "Royal Enfield", imageUnactive: BgRoyalEnfield, imageActive: BgRoyalEnfieldActive },
     { name: "Hyundai", imageUnactive: BgHyundai, imageActive: BgHyundaiActive },
     { name: "Scomadi", imageUnactive: BgScomadi, imageActive: BgScomadiActive },
-    { name: "Jeep", imageUnactive: BgJeep, imageActive: BgJeepActive },
-    { name: "Mercedes", imageUnactive: BgMercy, imageActive: BgMercyActive },
+    // { name: "Jeep", imageUnactive: BgJeep, imageActive: BgJeepActive },
+    // { name: "Mercedes", imageUnactive: BgMercy, imageActive: BgMercyActive },
     { name: "Ford", imageUnactive: BgFord, imageActive: BgFordActive },
     { name: "Chevrolet", imageUnactive: BgChevrolet, imageActive: BgChevroletActive },
   ];

@@ -5,7 +5,7 @@ const Hero = () => {
         <div className="flex p-16 flex-col lg:flex-row justify-between h-full text-left">
           <div className="w-full lg:w-3/4">
             <h1 className="text-4xl lg:text-6xl font-bold text-white mt-[33px]">
-              Our CREDO —
+              Our Values —
             </h1>
             <h1 className="text-4xl lg:text-6xl font-bold text-[#A8A8A8] mt-[33px]">
               This is what shapes us

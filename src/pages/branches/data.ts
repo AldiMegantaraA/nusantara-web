@@ -9,7 +9,7 @@ import scoMksr from "../../assets/img/scoMks.png";
 import reAntasari from "../../assets/img/reAntasari.png";
 import reBali from "../../assets/img/reBali.png";
 import reBdg from "../../assets/img/reBandung.png";
-import reBekasi from "../../assets/img/reBekasi.png";
+import reBekasi from "../../assets/img/reBekasi.jpg";
 import reBogor from "../../assets/img/reBogor.png";
 import reDepok from "../../assets/img/reDepok.png";
 import reSerpong from "../../assets/img/reSerpong.png";
@@ -236,12 +236,12 @@ const branchesData = {
     Chevrolet: [
       {
         id: 1,
-        name: 'Chevrolet Jakarta',
-        address: 'Jl. HR Rasuna Said No. 12, Jakarta',
-        city: 'Selatan, Indonesia 12950',
-        number: '+625113271000',
-        email: 'cro.hyundai.bjm@nusantara-group.com',
-        image: 'https://images.pexels.com/photos/3972755/pexels-photo-3972755.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+        name: 'Chevrolet Nusantara Star Service MTH',
+        address: 'Jl. MT Haryono  Kav. 5, Kebon Baru, Tebet',
+        city: 'Jakarta Selatan 12830',
+        number: '+6285283984973',
+        email: 'info@honda-nusantara.com',
+        image: fordMt
       }
     ]
 };

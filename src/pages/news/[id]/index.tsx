@@ -28,6 +28,14 @@ const NewsDetailPage = () => {
       loadNews();
     }, [id]);
 
+    const formatDate = (dateString: string) => {
+        return new Date(dateString).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        });
+      };
+
   if (!currentNews) {
     if(loading) {
         return (
@@ -54,26 +62,7 @@ const NewsDetailPage = () => {
     }
   }
 
-  const relatedNews = [
-    {
-      id: '4',
-      title: 'Honda Launches New Hybrid Technology',
-      image: 'https://images.pexels.com/photos/2244746/pexels-photo-2244746.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-      date: '12 May, 2025'
-    },
-    {
-      id: '5',
-      title: 'Mercedes-Benz Showroom Grand Opening',
-      image: 'https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-      date: '10 May, 2025'
-    },
-    {
-      id: '6',
-      title: 'Automotive Industry Trends 2025',
-      image: 'https://images.pexels.com/photos/3311574/pexels-photo-3311574.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-      date: '8 May, 2025'
-    }
-  ].filter(news => news.id !== id);
+  const relatedNews = posts.filter(news => news.title !== id);
 
   const shareUrl = window.location.href;
   const shareTitle = currentNews.title;
@@ -105,7 +94,7 @@ const NewsDetailPage = () => {
             <div className="flex items-center text-gray-400 text-sm space-x-4">
               <div className="flex items-center">
                 <Calendar className="w-4 h-4 mr-2" />
-                {currentNews.publishedAt}
+                {formatDate(currentNews.publishedAt)}
               </div>
               <div className="flex items-center">
                 <User className="w-4 h-4 mr-2" />
@@ -183,12 +172,12 @@ const NewsDetailPage = () => {
                 <Link key={news.id} to={`/news/${news.id}`} className="group">
                   <div className="bg-gray-700 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
                     <img
-                      src={news.image}
+                      src={news.imageUrl}
                       alt={news.title}
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="p-4">
-                      <div className="text-gray-400 text-sm mb-2">{news.date}</div>
+                      <div className="text-gray-400 text-sm mb-2">{formatDate(news.publishedAt)}</div>
                       <h3 className="text-white font-semibold group-hover:text-gray-300 transition-colors duration-300 line-clamp-2">
                         {news.title}
                       </h3>

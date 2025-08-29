@@ -5,10 +5,13 @@ import ContactForm from "./ContactForm";
 import ModalSubscribe from "./ModalSubscribe";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ModalPolicy from "./ModalPolicy";
 
 const Footer = () => {
   const Navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenModalLegal, setIsOpenModalLegal] = useState(false);
+  const [legalType, setLegalType] = useState('');
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -39,8 +42,8 @@ const Footer = () => {
         "Royal Enfield",
         "Hyundai",
         "Scomadi",
-        "Jeep",
-        "Mercedes-Benz",
+        // "Jeep",
+        // "Mercedes-Benz",
         "Ford",
         "Chevrolet",
       ],
@@ -145,6 +148,19 @@ const Footer = () => {
                       </a>
                     </p>
                     :
+                    menu.menuName === 'Legal' ? 
+                    <button
+                      type="button"
+                      key={idx}
+                      onClick={() => {
+                        setIsOpenModalLegal(true);
+                        setLegalType(item);
+                      }}
+                      className="font-medium mt-2 hover:text-[#A8A8A8] transition-colors duration-300 cursor-pointer whitespace-nowrap"
+                    >
+                      {item}
+                    </button>
+                    :
                       <p
                       key={idx}
                       className="font-medium mt-2 hover:text-[#A8A8A8] transition-colors duration-300 cursor-pointer whitespace-nowrap"
@@ -192,6 +208,7 @@ const Footer = () => {
     </footer>
 
     <ModalSubscribe isOpenModal={isOpen} onClose={() => setIsOpen(false)} />
+    <ModalPolicy isOpenModal={isOpenModalLegal} onClose={() => setIsOpenModalLegal(false)} legalType={legalType} />
     </>
   );
 };

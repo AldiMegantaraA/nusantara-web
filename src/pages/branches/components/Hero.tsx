@@ -11,9 +11,10 @@ const Hero = () => {
     'Royal Enfield',
     'Hyundai',
     'Scomadi',
-    'Jeep',
-    'Mercedes-benz',
+    // 'Jeep',
+    // 'Mercedes-benz',
     'Ford',
+    'Chevrolet'
   ];
 
   const branches = branchesData
@@ -66,6 +67,15 @@ const Hero = () => {
                     src={branch.image}
                     alt={branch.name}
                     className="w-80 h-full object-cover object-right"
+                  />
+                </div>
+                :
+                branch.name === 'Royal Enfield Bekasi' ? 
+                <div className="w-80 h-80 overflow-hidden rounded-2xl">
+                  <img
+                    src={branch.image}
+                    alt={branch.name}
+                    className="w-80 h-full object-fill"
                   />
                 </div>
                 :
