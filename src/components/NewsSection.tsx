@@ -15,6 +15,13 @@ const NewsSection = () => {
     });
   };
 
+  function slugify(title: string) {
+    return title
+      .toLowerCase()                 
+      .replace(/\s+/g, "-")        
+      .replace(/[^a-z0-9-]/g, "") 
+  }
+
   useEffect(() => {
     async function loadNews() {
       try {
@@ -50,7 +57,7 @@ const NewsSection = () => {
             <>
               {posts.map((news) => (
               <div key={news.id} className="group cursor-pointer">
-                <Link to={`/news/${news.title}`} className="block">
+                <Link to={`/news/${slugify(news.title)}`} className="block">
                   {/* Image */}
                   <div className="relative overflow-hidden rounded-2xl mb-6">
                     <img

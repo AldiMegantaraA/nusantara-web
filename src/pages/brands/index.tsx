@@ -5,8 +5,6 @@ import Honda from "../../assets/img/honda-desc.jpg";
 import RoyalEnfield from "../../assets/img/re-desc.jpg";
 import Hyundai from "../../assets/img/hyundai-desc.jpg";
 import Scomadi from "../../assets/img/scomadi-desc.jpg";
-import Jeep from "../../assets/img/jeep-desc.jpg";
-import Mercy from "../../assets/img/mercy-desc.jpg";
 import Ford from "../../assets/img/ford-desc.jpg";
 import Chevrolet from "../../assets/img/chevrolet-desc.jpg";
 

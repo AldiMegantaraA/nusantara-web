@@ -243,6 +243,17 @@ const branchesData = {
         email: 'info@honda-nusantara.com',
         image: fordMt
       }
+    ],
+    'Nusantara Star Service': [
+      {
+        id: 1,
+        name: 'Nusantara Star Service Spesialis Mercedes-Benz & Jeep',
+        address: 'Jl. MT Haryono  Kav. 5, Kebon Baru, Tebet',
+        city: 'Jakarta Selatan 12830',
+        number: '+6285283984973',
+        email: 'info@honda-nusantara.com',
+        image: mercy
+      }
     ]
 };
 

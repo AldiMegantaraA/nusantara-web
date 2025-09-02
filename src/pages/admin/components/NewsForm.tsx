@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Save, X, Upload, Eye, ChevronLeftCircle } from "lucide-react";
 import { NewsPost, NewsFormData } from "../../../types/news";
+import axios from "axios";
 
 interface NewsFormProps {
   post?: NewsPost;
@@ -22,8 +23,18 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
     tags: post?.tags?.join(", ") || "",
   });
 
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleButtonClick = () => {
+    fileInputRef.current?.click()
+  }
+
   const [isPreview, setIsPreview] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadingUpload, setLoadingUpload] = useState(false);
+  const [image, setImage] = useState(post?.imageUrl || '');
+  const [preview, setPreview] = useState<string | null>(post?.imageUrl || null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,7 +50,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
         mode: 'cors',
         redirect: 'follow',
         body: 
-          post ? JSON.stringify({ section: 'news', id: post.id, ...formData, tags: Array.isArray(post.tags) ? post.tags.join(", ") : post.tags, }) : JSON.stringify({section: 'news', ...formData}),
+          post ? JSON.stringify({ section: 'news', id: post.id, ...formData, imageUrl: image, tags: Array.isArray(post.tags) ? post.tags.join(", ") : post.tags, }) : JSON.stringify({section: 'news', ...formData, imageUrl: image}),
       });
 
       const result = await response.json();
@@ -74,6 +85,37 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
     "events",
     "partnerships",
   ];
+
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.type.startsWith('image/')) {
+        setLoadingUpload(true);
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'nusantara'); // You need to set this in your Cloudinary account
+        formData.append('api_key', '144679741298288');
+  
+        try {
+          const response = await axios.post('https://api.cloudinary.com/v1_1/dqyervm1b/image/upload', formData);
+          const imageUrl = response.data.secure_url; // The URL of the uploaded image
+  
+          // Set the image URL in your state
+          setPreview(imageUrl);
+          setImage(imageUrl);
+          setLoadingUpload(false);
+        } catch (error) {
+          if(error.response.data.error.message.includes('large')){
+            setError('File size too large (Maximum 10MB), please compress image file size before upload!');
+          }
+          setLoadingUpload(false);
+        }
+      } else {
+        setError('Please select an image file');
+        setLoadingUpload(false);
+      }
+    }
+  };
 
   if (isPreview) {
     return (
@@ -244,38 +286,58 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
             />
           </div>
         </div>
+        {
+          loadingUpload ? 
+          <h4 className="text-center">Uploading image...</h4>
+          :
+          <>
+            <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Featured Image URL
+            </label>
+            <p className="text-red-600">{error}</p>
+            <div className="flex space-x-2">
+              <input
+                type="url"
+                name="imageUrl"
+                value={image}
+                onChange={handleChange}
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                placeholder="https://example.com/image.jpg"
+              />
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Featured Image URL
-          </label>
-          <div className="flex space-x-2">
-            <input
-              type="url"
-              name="imageUrl"
-              value={formData.imageUrl}
-              onChange={handleChange}
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
-              placeholder="https://example.com/image.jpg"
-            />
-            <button
-              type="button"
-              className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200 flex items-center space-x-2"
-            >
-              <Upload className="w-4 h-4" />
-              <span>Upload</span>
-            </button>
-          </div>
-          {formData.imageUrl && (
-            <div className="mt-4">
-              <img
-                src={formData.imageUrl}
-                alt="Preview"
-                className="w-full h-48 object-cover rounded-lg"
+              {/* Tombol upload */}
+              <button
+                type="button"
+                onClick={handleButtonClick}
+                className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200 flex items-center space-x-2"
+              >
+                <Upload className="w-4 h-4" />
+                <span>Upload</span>
+              </button>
+
+              {/* Input file tersembunyi */}
+              <input
+                type="file"
+                accept="image/*"
+                name="imageUrl"
+                ref={fileInputRef}
+                onChange={handleImageChange}
+                className="hidden"
               />
             </div>
-          )}
-        </div>
+            {preview && (
+              <div className="mt-4">
+                <img
+                  src={preview}
+                  alt="Preview"
+                  className="w-full h-48 object-cover rounded-lg"
+                />
+              </div>
+            )}
+          </div>
+          </>
+        }
 
         <div className="flex justify-between items-center pt-6 border-t border-gray-200">
           <div className="flex space-x-3">

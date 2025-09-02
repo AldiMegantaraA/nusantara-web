@@ -28,6 +28,11 @@ const Header = () => {
       hasDropdown: false,
       href: "/news",
     },
+    {
+      name: "Jobs",
+      hasDropdown: false,
+      href: "/jobs",
+    },
   ];
 
   const handleDropdownItemClick = (href: string | undefined) => {

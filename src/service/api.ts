@@ -32,6 +32,18 @@ export async function fetchNews(type: string): Promise<[]> {
         email: item.Email,
         joinDate: item.JoinDate,
     }));
+  } else if (type === 'jobs') {
+    return json.data.map((item: any) => ({
+        id: item.ID,
+        title: item.Title,
+        brand: item.Brand,
+        placement: item.Placement,
+        requirements: item.Requirements,
+        benefits: item.Benefits,
+        email: item.Email,
+        subject: item.SubjectEmail,
+        postedAt: item.PostedAt
+    }));
   } else {
     return json.data.map((item: any) => ({
         id: item.ID,

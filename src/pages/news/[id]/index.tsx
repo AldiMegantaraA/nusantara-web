@@ -9,6 +9,13 @@ const NewsDetailPage = () => {
     const [posts, setPosts] = useState<NewsPost[]>([]);
     const [loading, setLoading] = useState(true);
     const [currentNews, setCurrentNews] = useState<NewsPost | null>(null);
+
+    function slugify(title: string) {
+        return title
+            .toLowerCase()                 
+            .replace(/\s+/g, "-")        
+            .replace(/[^a-z0-9-]/g, "") 
+    }
   
     useEffect(() => {
       async function loadNews() {
@@ -17,7 +24,7 @@ const NewsDetailPage = () => {
           setPosts(data);
   
           // cari news sesuai id
-          const found = data.find((post: NewsPost) => post.title === id);
+          const found = data.find((post: NewsPost) => slugify(post.title) === slugify(id as string));
           setCurrentNews(found || null);
         } catch (err) {
           console.error("Failed to load news:", err);

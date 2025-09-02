@@ -14,7 +14,8 @@ const Hero = () => {
     // 'Jeep',
     // 'Mercedes-benz',
     'Ford',
-    'Chevrolet'
+    'Chevrolet',
+    'Nusantara Star Service',
   ];
 
   const branches = branchesData

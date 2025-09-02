@@ -7,6 +7,7 @@ import brandRoutes from "./routes/brands";
 import branchesRoutes from "./routes/branches";
 import adminRoutes from "./routes/admin";
 import newsRoutes from "./routes/news";
+import jobsRoutes from "./routes/jobs";
 
 const routes = [
   {
@@ -35,6 +36,10 @@ const routes = [
       {
         path: "news",
         children: newsRoutes,
+      },
+      {
+        path: "jobs",
+        children: jobsRoutes,
       },
     ],
   },

@@ -46,6 +46,7 @@ const Footer = () => {
         // "Mercedes-Benz",
         "Ford",
         "Chevrolet",
+        "Nusantara Star Service",
       ],
     },
     {

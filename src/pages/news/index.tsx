@@ -9,6 +9,13 @@ const NewsPage = () => {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [posts, setPosts] = useState<NewsPost[]>([]);
     const [loading, setLoading] = useState(true);
+
+    function slugify(title: string) {
+        return title
+            .toLowerCase()                 
+            .replace(/\s+/g, "-")        
+            .replace(/[^a-z0-9-]/g, "") 
+    }
   
     useEffect(() => {
       async function loadNews() {
@@ -114,7 +121,7 @@ const NewsPage = () => {
                     <h2 className="text-2xl font-bold text-white mb-8">All News</h2>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {posts.map((news) => (
-                        <Link key={news.id} to={`/news/${news.title}`} className="group">
+                        <Link key={news.id} to={`/news/${slugify(news.title)}`} className="group">
                         <div className="rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
                             <div className="relative h-64">
                             <img
@@ -128,7 +135,7 @@ const NewsPage = () => {
                                 </span>
                             </div>
                             </div>
-                            <div className="p-6">
+                            <div className="">
                             <div className="flex items-center text-gray-400 text-sm mb-3">
                                 <Calendar className="w-4 h-4 mr-2" />
                                 {formatDate(news.publishedAt)}
