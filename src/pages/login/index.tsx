@@ -2,27 +2,13 @@
 
 import { Button, Form, Input, notification } from "antd";
 import { useState } from "react";
-import aesjs from "aes-js";
 import store from "store";
 import { useNavigate } from "react-router-dom";
-
-const key = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-
-const encryptPassword = (password: string) => {
-  // Convert text to bytes
-  const textBytes = aesjs.utils.utf8.toBytes(password);
-
-  // The counter is optional, and if omitted will begin at 1
-  const aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(5));
-  const encryptedBytes = aesCtr.encrypt(textBytes);
-
-  // To print or store the binary data, you may convert it to hex
-  const encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
-  return encryptedHex;
-};
+import { login } from "../../service/api";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [formdata, setFormdata] = useState({
     username: "",
     password: "",
@@ -37,27 +23,28 @@ const Login = () => {
     setFormdata(newData);
   };
 
-  const onFinish = () => {
+  const onFinish =  async() => {
+    setLoading(true);
     const payload = {
       username: formdata.username,
       password: formdata.password,
     };
 
-    if (
-      payload?.username === "admin" &&
-      payload?.password === "a71de6a4d013cb99"
-    ) {
+    try {
+      const user = await login(payload.username, payload.password);
       store.set("authorized", true);
-      navigate(`/admin`);
       notification.success({
         message: "Login Successful",
         description: "You are now logged in!",
       });
-    } else {
+      navigate(`/admin`);
+    } catch (err: any) {
       notification.error({
         message: "Login Failed",
         description: "You have entered an invalid username or password!",
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -111,9 +98,9 @@ const Login = () => {
                     ? "!bg-[#1F2937]"
                     : "!bg-[#F3F4F6] !border-[#F3F4F6]"
                 } !rounded-[10px] hover:opacity-75 !h-10 min-[1600px]:!w-[350px] !2xl:w-[300px] xl:!w-[300px] lg:!w-[200px] md:!w-[200px] !w-[200px]`}
-                disabled={!formdata.username || !formdata.password}
+                disabled={!formdata.username || !formdata.password || loading}
               >
-                Sign In
+                {loading? 'Loading...' : 'Sign In'}
               </Button>
 
               <div className="flex justify-center text-xs text-[#9CA3AF] font-[500] leading-[18px] mt-9 text-center">

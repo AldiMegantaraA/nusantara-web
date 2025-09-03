@@ -9,7 +9,7 @@ interface NewsFormProps {
   onCancel: () => void;
 }
 
-const API_URL = "https://script.google.com/macros/s/AKfycbzitNyzBUP5QVrZCNd1j3tdiA7b6qgQMm4rAX6zadBqhYAwVItUmtjMz4uuAY12Xh4/exec";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
   const [formData, setFormData] = useState<NewsFormData>({

@@ -15,7 +15,7 @@ export default function ModalSubscribe({
       setIsOpen(isOpenModal);
     }, [isOpenModal]);
   const [email, setEmail] = useState("");
-  const API_URL = "https://script.google.com/macros/s/AKfycbzitNyzBUP5QVrZCNd1j3tdiA7b6qgQMm4rAX6zadBqhYAwVItUmtjMz4uuAY12Xh4/exec";
+  const API_URL = import.meta.env.VITE_API_URL;
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
