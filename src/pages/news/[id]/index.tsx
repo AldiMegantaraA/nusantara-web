@@ -43,6 +43,12 @@ const NewsDetailPage = () => {
         });
       };
 
+    function containsHtmlTags(str) {
+        // This regex looks for an opening angle bracket followed by a letter,
+        // then any characters (including newlines), and finally a closing angle bracket.
+        return /<[a-z][\s\S]*>/i.test(str);
+    }
+
   if (!currentNews) {
     if(loading) {
         return (
@@ -158,13 +164,18 @@ const NewsDetailPage = () => {
 
           {/* Article Content */}
           <div className="prose prose-lg prose-invert max-w-none">
-            <div className="text-gray-300 leading-relaxed space-y-6">
-              {currentNews.content.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="text-lg leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
+            {
+                containsHtmlTags(currentNews.content) ?
+                <div className="text-gray-300 leading-relaxed space-y-6" dangerouslySetInnerHTML={{ __html: currentNews.content }} ></div>
+                :
+                <div className="text-gray-300 leading-relaxed space-y-6" >
+                {currentNews.content.split('\n\n').map((paragraph, index) => (
+                    <p key={index} className="text-lg leading-relaxed">
+                    {paragraph}
+                    </p>
+                ))}
+                </div>
+            }
           </div>
         </div>
       </article>

@@ -2881,6 +2881,11 @@ react-router@7.8.0:
     cookie "^1.0.1"
     set-cookie-parser "^2.6.0"
 
+react-simple-wysiwyg@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.npmjs.org/react-simple-wysiwyg/-/react-simple-wysiwyg-3.4.0.tgz"
+  integrity sha512-2RYJoUBqXOH+i8Q3vUQCg8O0ZRlb3RsZRpHNQwGLLFOosscdT4grEcPZbrB2xrq0ir/5N2MitRp/sHzxJu6a7w==
+
 react@^18.3.1:
   version "18.3.1"
   resolved "https://registry.npmjs.org/react/-/react-18.3.1.tgz"

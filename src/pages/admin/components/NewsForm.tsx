@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Save, X, Upload, Eye, ChevronLeftCircle } from "lucide-react";
 import { NewsPost, NewsFormData } from "../../../types/news";
 import axios from "axios";
+import Editor from 'react-simple-wysiwyg';
 
 interface NewsFormProps {
   post?: NewsPost;
@@ -76,6 +77,13 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  function updateContent(newContent: string) {
+    setFormData((prev) => ({
+      ...prev,
+      content: newContent,
+    }));
+  }
 
   const categories = [
     "general",
@@ -227,15 +235,10 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Content *
           </label>
-          <textarea
-            name="content"
+          <Editor 
+            containerProps={{ style: { resize: 'vertical' } }}
             value={formData.content}
-            onChange={handleChange}
-            required
-            rows={12}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent"
-            placeholder="Write your news content here..."
-          />
+            onChange={(e) => updateContent(e.target.value)} />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
