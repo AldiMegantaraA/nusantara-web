@@ -2,13 +2,35 @@ import React, { useRef, useState } from "react";
 import { Save, X, Upload, Eye, ChevronLeftCircle } from "lucide-react";
 import { NewsPost, NewsFormData } from "../../../types/news";
 import axios from "axios";
-import Editor from 'react-simple-wysiwyg';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 interface NewsFormProps {
   post?: NewsPost;
   onSave: (data: NewsFormData) => void;
   onCancel: () => void;
 }
+
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, false] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote', 'link'],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+  ],
+};
+
+const formats = [
+  'header',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'link',
+];
+
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -235,10 +257,14 @@ const NewsForm: React.FC<NewsFormProps> = ({ post, onSave, onCancel }) => {
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Content *
           </label>
-          <Editor 
-            containerProps={{ style: { resize: 'vertical' } }}
+
+          <ReactQuill
+            theme="snow"
             value={formData.content}
-            onChange={(e) => updateContent(e.target.value)} />
+            onChange={(e) => updateContent(e)}
+            modules={modules}
+            formats={formats}
+          />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
