@@ -112,7 +112,7 @@ export default function JobsPage() {
                             </Link>
                         ))
                         ) : (
-                        <p className="text-center text-gray-500 py-10">No jobs found</p>
+                        <p className="text-center text-gray-500 py-10">No careers found</p>
                     )}
                 </div>
             </div>

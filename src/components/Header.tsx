@@ -29,9 +29,9 @@ const Header = () => {
       href: "/news",
     },
     {
-      name: "Jobs",
+      name: "Career",
       hasDropdown: false,
-      href: "/jobs",
+      href: "/career",
     },
   ];
 

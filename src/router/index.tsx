@@ -38,7 +38,7 @@ const routes = [
         children: newsRoutes,
       },
       {
-        path: "jobs",
+        path: "career",
         children: jobsRoutes,
       },
     ],

@@ -21,7 +21,10 @@ const NewsPage = () => {
       async function loadNews() {
         try {
           const data = await fetchNews('news'); // <- API call
-          setPosts(data);
+          const sortedData = data.sort((a, b) => {
+            return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+            });
+          setPosts(sortedData);
         } catch (err) {
           console.error("Failed to load news:", err);
         } finally {
@@ -120,38 +123,49 @@ const NewsPage = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 className="text-2xl font-bold text-white mb-8">All News</h2>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {posts.map((news) => (
-                        <Link key={news.id} to={`/news/${slugify(news.title)}`} className="group">
-                        <div className="rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
-                            <div className="relative h-64">
-                            <img
-                                src={news.imageUrl}
-                                alt={news.title}
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            />
-                            <div className="absolute top-4 left-4">
-                                <span className="bg-red-600 text-white text-xs font-medium px-3 py-1 rounded-full">
-                                Featured
-                                </span>
+                    {posts.map((news, index) => {
+                        const isToday =
+                            new Date(news.publishedAt).toDateString() === new Date().toDateString();
+
+                        const isTop3 = index < 3;
+
+                        const showFeatured = isToday || isTop3;
+
+                        return (
+                            <Link key={news.id} to={`/news/${slugify(news.title)}`} className="group">
+                            <div className="rounded-2xl rounded-b-none overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
+                                <div className="relative h-64">
+                                <img
+                                    src={news.imageUrl}
+                                    alt={news.title}
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                />
+                                {showFeatured && (
+                                    <div className="absolute top-4 left-4">
+                                    <span className="bg-red-600 text-white text-xs font-medium px-3 py-1 rounded-full">
+                                        Featured
+                                    </span>
+                                    </div>
+                                )}
+                                </div>
+                                <div>
+                                <div className="flex items-center text-gray-400 text-sm mt-3 mb-3">
+                                    <Calendar className="w-4 h-4 mr-2" />
+                                    {formatDate(news.publishedAt)}
+                                </div>
+                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gray-300 transition-colors duration-300">
+                                    {news.title}
+                                </h3>
+                                <p className="text-gray-300 mb-4">{news.excerpt}</p>
+                                <div className="flex items-center justify-between">
+                                    <span className="text-sm text-gray-400">By {news.author}</span>
+                                    <ArrowRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform duration-300" />
+                                </div>
+                                </div>
                             </div>
-                            </div>
-                            <div className="">
-                            <div className="flex items-center text-gray-400 text-sm mb-3">
-                                <Calendar className="w-4 h-4 mr-2" />
-                                {formatDate(news.publishedAt)}
-                            </div>
-                            <h3 className="text-xl font-bold text-white mb-3 group-hover:text-gray-300 transition-colors duration-300">
-                                {news.title}
-                            </h3>
-                            <p className="text-gray-300 mb-4">{news.excerpt}</p>
-                            <div className="flex items-center justify-between">
-                                <span className="text-sm text-gray-400">By {news.author}</span>
-                                <ArrowRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform duration-300" />
-                            </div>
-                            </div>
-                        </div>
-                        </Link>
-                    ))}
+                            </Link>
+                        );
+                    })}
                     </div>
                 </div>
                 </section>

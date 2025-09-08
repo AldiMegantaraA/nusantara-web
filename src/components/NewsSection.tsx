@@ -26,7 +26,29 @@ const NewsSection = () => {
     async function loadNews() {
       try {
         const data = await fetchNews('news');
-        setPosts(data);
+        const sortedData = data.sort((a, b) => {
+          return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+          });
+        // Helper: check apakah tanggal hari ini
+        const isToday = (dateString: string) => {
+          const today = new Date();
+          const date = new Date(dateString);
+          return (
+            date.getDate() === today.getDate() &&
+            date.getMonth() === today.getMonth() &&
+            date.getFullYear() === today.getFullYear()
+          );
+        };
+
+        // Ambil 3 data teratas (setelah sort)
+        const top3 = sortedData.slice(0, 3);
+
+        // Filter untuk dapat hanya yg today
+        const todayData = sortedData.filter((item) => isToday(item.publishedAt));
+
+        // Gabungkan today + top3, tapi jangan ada duplikat
+        const filteredData = [...new Set([...todayData, ...top3])];
+        setPosts(filteredData);
       } catch (err) {
         console.error("Failed to load news:", err);
       } finally {
@@ -53,7 +75,9 @@ const NewsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {
             loading ? 
-            <h4>Loading...</h4> : 
+            <div className="col-span-full flex justify-center items-center py-20">
+              <h4 className="text-2xl font-bold text-white">Loading...</h4>
+            </div> : 
             <>
               {posts.map((news) => (
               <div key={news.id} className="group cursor-pointer">
