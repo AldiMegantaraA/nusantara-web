@@ -166,7 +166,11 @@ const NewsDetailPage = () => {
           <div className="prose prose-lg prose-invert max-w-none">
             {
                 containsHtmlTags(currentNews.content) ?
-                <div className="text-gray-300 leading-relaxed space-y-6" dangerouslySetInnerHTML={{ __html: currentNews.content }} ></div>
+                <div
+                className="prose prose-invert max-w-none"
+                dangerouslySetInnerHTML={{ __html: currentNews.content }}
+                ></div>
+
                 :
                 <div className="text-gray-300 leading-relaxed space-y-6" >
                 {currentNews.content.split('\n\n').map((paragraph, index) => (
